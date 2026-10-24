@@ -116,3 +116,80 @@
     max-width: 100%;
   }
 }
+
+/* ==========================================================
+   CLIMATECOINS VERIFIER PORTAL — FARM PHOTO PAGE BACKGROUND
+   Keep the existing Verra photo in the green dashboard banner.
+   Image location: public/farmer-spraying.jpg
+   ========================================================== */
+
+/* Full dashboard background, matching the FPO portal */
+.main-area {
+  position: relative;
+  isolation: isolate;
+  background:
+    linear-gradient(
+      rgba(247, 248, 244, 0.76),
+      rgba(247, 248, 244, 0.76)
+    ),
+    url('/verra.jpg') center center / cover fixed no-repeat !important;
+}
+
+/* Keep the main content transparent so the photo is visible behind it */
+.main-area .page-content {
+  background: transparent !important;
+}
+
+/* Light glass effect for the top navigation */
+.main-area .topbar {
+  background: rgba(255, 255, 255, 0.84) !important;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+/* Make dashboard cards readable while letting a little background show */
+.main-area .stat-card,
+.main-area .panel,
+.main-area .project-card,
+.main-area .review-card,
+.main-area .detail-modal,
+.main-area .buy-modal {
+  background-color: rgba(255, 255, 255, 0.94);
+}
+
+/* Preserve the green verifier hero and the Verra image on its right half */
+.main-area .welcome-banner {
+  background-color: #173f2f !important;
+  isolation: isolate;
+}
+
+.main-area .welcome-banner::after {
+  z-index: 0;
+}
+
+.main-area .welcome-banner > div:first-child {
+  z-index: 2;
+}
+
+/* Do not show the old decorative shield over the Verra photo */
+.main-area .welcome-banner .banner-illustration {
+  display: none !important;
+}
+
+/* Keep login screen styling separate from the dashboard background */
+.login-shell {
+  background: #fff;
+}
+
+/* Use normal scrolling on tablets and phones */
+@media (max-width: 900px) {
+  .main-area {
+    background-attachment: scroll !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .main-area {
+    background-attachment: scroll !important;
+  }
+}

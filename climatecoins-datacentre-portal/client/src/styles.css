@@ -126,9 +126,6 @@
   }
 }
 
-/
-/
-
 /* ==========================================================
    CLIMATECOINS — MARKETPLACE PROJECT IMAGES
    ========================================================== */
@@ -157,4 +154,80 @@
 .project-art.art-tree .art-landscape,
 .project-art.art-soil .art-landscape {
   display: none !important;
+}
+
+
+/* ==========================================================
+   DATA CENTRE PORTAL — SOFT FARM BACKGROUND LIKE THE FPO PORTAL
+   Keeps the data-centre image in the login and dashboard banner.
+   ========================================================== */
+.main-area {
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+}
+
+.main-area::before {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  top: 70px;
+  right: 0;
+  bottom: 0;
+  left: 256px;
+  pointer-events: none;
+  background-image:
+    linear-gradient(
+      rgba(247, 248, 244, 0.76),
+      rgba(247, 248, 244, 0.76)
+    ),
+    url("/data(1).jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Keep dashboard cards and tables crisp over the faint background. */
+.page-header,
+.page-content,
+.app-footer,
+.list-panel,
+.page-alert,
+.requests-layout {
+  position: relative;
+}
+
+/* The top navigation remains clean and readable. */
+.topbar {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+/* Keep the dashboard's data-centre banner and image above the page background. */
+.welcome-banner {
+  position: relative;
+  isolation: isolate;
+  background-color: #173f2f;
+}
+
+/* Tablet layout: match the responsive sidebar width. */
+@media (max-width: 1250px) {
+  .main-area::before {
+    left: 230px;
+  }
+}
+
+/* Mobile layout: the sidebar collapses, so the background spans the screen. */
+@media (max-width: 850px) {
+  .main-area::before {
+    left: 0;
+    top: 60px;
+    background-position: center center;
+    background-image:
+      linear-gradient(
+        rgba(247, 248, 244, 0.82),
+        rgba(247, 248, 244, 0.82)
+      ),
+      url("/data(1).jpg");
+  }
 }

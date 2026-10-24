@@ -1,0 +1,34 @@
+{
+  "name": "climatecoins-fpo-portal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ClimateCoins FPO portal prototype with React, Express and SQLite",
+  "scripts": {
+    "dev": "concurrently -k \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "nodemon server/src/index.js",
+    "dev:client": "vite --config client/vite.config.js",
+    "start": "node server/src/index.js",
+    "build": "vite build --config client/vite.config.js",
+    "db:seed": "node server/src/seed.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.8.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.468.0",
+    "multer": "^1.4.5-lts.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "nodemon": "^3.1.7",
+    "vite": "^6.0.5"
+  }
+}

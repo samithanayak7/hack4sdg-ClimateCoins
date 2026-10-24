@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
+const createPoolsRouter = require('./routes/pools');
 const multer = require('multer');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -140,6 +141,12 @@ app.get('/api/health', (_req, res) => {
     service: 'ClimateCoins FPO API'
   });
 });
+
+// ============================================================
+// Farmer pooling routes
+// ============================================================
+
+app.use('/api/pools', createPoolsRouter(db, auth, activity));
 
 // ============================================================
 // Authentication routes

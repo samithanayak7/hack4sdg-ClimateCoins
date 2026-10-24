@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Routes, Route, Navigate, useLocation, useNavigate, Link } from 'react-router-dom';
 import { api, getToken } from './api';
 import CarbonImpact from "./CarbonImpact";
+import FarmerPooling from "./pages/FarmerPooling.jsx";
 import {
   Sprout as SproutIcon,
   LayoutDashboard,
@@ -132,6 +133,7 @@ function Shell({ user, onLogout, children }) {
   const nav = [
     { to: '/', label: 'Overview', icon: LayoutDashboard },
     { to: '/farmers', label: 'Farmers', icon: Users },
+  { to: '/farmer-pooling', label: 'Farmer Pooling', icon: SproutIcon },
     { to: '/eligibility', label: 'Eligibility review', icon: ClipboardCheck },
     { to: '/documents', label: 'Documents', icon: FileText },
     { to: '/plant-recommendations', label: 'Plant Recommendations', icon: SproutIcon },
@@ -1389,6 +1391,7 @@ function App() {
         <Route path="/documents" element={<Documents />} />
         <Route path="/carbon-impact" element={<CarbonImpact />} />
         <Route path="/plant-recommendations" element={<PlantRecommendations />} />
+<Route path="/farmer-pooling" element={<FarmerPooling />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Shell>

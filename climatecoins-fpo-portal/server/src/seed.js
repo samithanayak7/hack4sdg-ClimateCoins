@@ -1,8 +1,20 @@
 const bcrypt = require('bcryptjs');
 const db = require('./db');
 const password = bcrypt.hashSync('ChangeMe12345!', 10);
-const insertUser = db.prepare(`INSERT OR IGNORE INTO users(name,email,password_hash,role,fpo_name) VALUES(?,?,?,?,?)`);
-insertUser.run('FPO Demo Administrator','fpo@climatecoins.local',password,'fpo','GreenHarvest Farmer Producer Organisation');
+const insertUser = db.prepare(`
+  INSERT INTO users (name, email, password_hash, role, fpo_name)
+  VALUES (?, ?, ?, ?, ?)
+  ON CONFLICT(email) DO UPDATE SET
+    password_hash = excluded.password_hash
+`);
+
+insertUser.run(
+  'FPO Demo Administrator',
+  'fpo@climatecoins.local',
+  password,
+  'fpo',
+  'GreenHarvest Farmer Producer Organisation'
+);
 const user = db.prepare('SELECT id FROM users WHERE email=?').get('fpo@climatecoins.local');
 const count = db.prepare('SELECT COUNT(*) AS n FROM farmers').get().n;
 if (!count) {

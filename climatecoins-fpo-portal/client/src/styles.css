@@ -8,3 +8,60 @@
 /* ClimateCoins farm-photo background updates */
 .welcome-visual .sun,.welcome-visual .hill,.welcome-visual .farm-row{display:none}
 .login-orbit{display:none}
+
+
+/* ==========================================================
+   ClimateCoins FPO Portal — full dashboard farm background
+   Keep this block at the end so it overrides earlier styles.
+   Image required: client/public/farmer-spraying.jpg
+   ========================================================== */
+
+.main-area {
+  position: relative;
+  isolation: isolate;
+  background-color: #f6f7f3 !important;
+  background-image:
+    linear-gradient(
+      rgba(246, 247, 243, 0.76),
+      rgba(246, 247, 243, 0.76)
+    ),
+    url('/farmer-spraying.jpg') !important;
+  background-position: center center, center center !important;
+  background-size: cover, cover !important;
+  background-repeat: no-repeat, no-repeat !important;
+  background-attachment: fixed, fixed !important;
+}
+
+/* Keep the page area transparent so the photograph shows through. */
+.main-area .page-content {
+  background: transparent !important;
+}
+
+/* A lightly translucent top bar lets the image remain visible behind it. */
+.main-area .topbar {
+  background: rgba(255, 255, 255, 0.82) !important;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+/* Keep cards legible while allowing a subtle hint of the background. */
+.main-area .stat-card,
+.main-area .panel,
+.main-area .detail-hero,
+.main-area .form-panel,
+.main-area .aside-note,
+.main-area .review-card {
+  background-color: rgba(255, 255, 255, 0.94);
+}
+
+/* Preserve the existing split hero banner and its own farmer image. */
+.main-area .welcome-banner {
+  background-color: #183e2d;
+}
+
+/* On mobile, avoid fixed-background scrolling glitches. */
+@media (max-width: 900px) {
+  .main-area {
+    background-attachment: scroll, scroll !important;
+  }
+}

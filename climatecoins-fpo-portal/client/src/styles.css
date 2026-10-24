@@ -66,224 +66,269 @@
   }
 }
 
-/* Farmer Pooling page */
+/* ==========================================================
+   Farmer Pooling page — clean layout
+   ========================================================== */
+
+/* Keep the page readable over the portal background image. */
 .pooling-page {
   display: grid;
   gap: 22px;
+  width: 100%;
+  min-width: 0;
   color: #29452e;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  line-height: 1.55;
 }
 
-.pooling-heading {
+.pooling-page,
+.pooling-page * { box-sizing: border-box; }
+
+.pooling-page h1,
+.pooling-page h2,
+.pooling-page h3,
+.pooling-page p { overflow-wrap: anywhere; }
+
+.pooling-heading,
+.pooling-page .page-heading {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 0;
 }
 
-.pooling-heading h1 {
+.pooling-heading h1,
+.pooling-page .page-heading h1 {
   margin: 7px 0;
-  color: #29452e;
-  font-size: clamp(25px, 3vw, 34px);
+  font-family: Manrope, sans-serif;
+  font-size: clamp(26px, 3vw, 34px);
+  line-height: 1.2;
   letter-spacing: -1px;
+  color: #1c3728;
 }
 
 .pooling-heading p,
+.pooling-page .page-heading p,
 .pool-muted {
-  color: #7c897b;
-  font-size: 12px;
-  line-height: 1.6;
+  margin: 0;
+  color: #718174;
+  font-size: 13px;
+  line-height: 1.65;
 }
 
 .pool-eyebrow {
-  color: #77916d;
+  color: #718a6c;
   font-size: 10px;
   letter-spacing: 1.5px;
   font-weight: 700;
+  text-transform: uppercase;
 }
 
-.pool-button {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  padding: 11px 14px;
-  border: 1px solid #dce5d7;
-  border-radius: 9px;
-  background: #fff;
-  color: #36583a;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.pool-button.primary {
-  width: 100%;
-  background: #244b34;
-  border-color: #244b34;
-  color: white;
-}
-
-.pool-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
+/* Metric cards */
 .pool-metrics {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
+  gap: 14px;
+  min-width: 0;
 }
 
 .pool-metrics article {
-  display: grid;
-  gap: 9px;
-  padding: 17px;
-  background: #fff;
-  border: 1px solid #e7ebe3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+  padding: 18px;
+  background: rgba(255,255,255,.97);
+  border: 1px solid #e3e9df;
   border-radius: 13px;
-  box-shadow: 0 3px 12px #244b3407;
+  box-shadow: 0 4px 16px rgba(35,65,42,.06);
 }
 
-.pool-metrics svg {
-  color: #63845a;
-}
-
-.pool-metrics span {
-  font-size: 11px;
-  color: #7c897b;
-}
-
+.pool-metrics svg { color: #63845a; flex-shrink: 0; }
+.pool-metrics span { color: #748274; font-size: 12px; line-height: 1.5; }
 .pool-metrics strong {
-  font-size: 25px;
   color: #29452e;
+  font-family: Manrope, sans-serif;
+  font-size: 26px;
+  line-height: 1.2;
 }
 
+/* Main layout: controls/farmers on left, map/results on right */
 .pooling-workspace {
   display: grid;
-  grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.7fr);
+  grid-template-columns: minmax(300px, .88fr) minmax(0, 1.55fr);
   align-items: start;
-  gap: 18px;
+  gap: 20px;
+  width: 100%;
+  min-width: 0;
 }
 
 .pool-left-column,
 .pool-right-column {
   display: grid;
-  gap: 16px;
+  gap: 18px;
   min-width: 0;
 }
 
 .pool-card {
   min-width: 0;
-  padding: 19px;
-  background: #fff;
-  border: 1px solid #e6ebe2;
+  padding: 21px;
+  background: rgba(255,255,255,.97);
+  border: 1px solid #e3e9df;
   border-radius: 14px;
-  box-shadow: 0 4px 18px #29452e08;
+  box-shadow: 0 4px 18px rgba(41,69,46,.07);
 }
 
 .pool-card h2 {
   margin: 0 0 14px;
   color: #29452e;
-  font-size: 15px;
+  font-family: Manrope, sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
 }
 
 .pool-card h3 {
+  margin: 0 0 8px;
   color: #29452e;
-  font-size: 12px;
+  font-family: Manrope, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
 }
 
+.pool-card p { margin: 6px 0; line-height: 1.6; }
+
+/* Controls: one label above each field, never beside it */
 .pool-card label {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   gap: 8px;
-  margin: 15px 0;
-  color: #627462;
-  font-size: 11px;
+  width: 100%;
+  margin: 17px 0;
+  color: #526653;
+  font-size: 12px;
   font-weight: 600;
+  line-height: 1.5;
 }
 
 .pool-card input:not([type="range"]),
-.pool-card select {
-  box-sizing: border-box;
+.pool-card select,
+.pool-card textarea {
+  display: block;
   width: 100%;
+  max-width: 100%;
   min-width: 0;
-  padding: 10px;
-  border: 1px solid #e0e7dc;
+  min-height: 40px;
+  padding: 10px 12px;
+  border: 1px solid #dce5d8;
   border-radius: 8px;
-  background: #fafbf8;
+  background: #fbfcf9;
   color: #29452e;
-  font: inherit;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.pool-card input:focus,
+.pool-card select:focus,
+.pool-card textarea:focus {
+  outline: none;
+  border-color: #7fa77b;
+  box-shadow: 0 0 0 3px rgba(127,167,123,.17);
 }
 
 .pool-card input[type="range"] {
+  display: block;
   width: 100%;
+  margin: 5px 0;
   accent-color: #54805a;
 }
 
+.pool-button,
+.pool-card button {
+  font-family: "DM Sans", sans-serif;
+}
+
+.pool-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 10px 14px;
+  border: 1px solid #dce5d7;
+  border-radius: 9px;
+  background: #fff;
+  color: #36583a;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.pool-button:hover { background: #f3f7f0; }
+.pool-button.primary {
+  width: 100%;
+  background: #244b34;
+  border-color: #244b34;
+  color: #fff;
+}
+.pool-button.primary:hover { background: #315e40; }
+.pool-button:disabled,
+.pool-card button:disabled { opacity: .6; cursor: not-allowed; }
+
+/* Registered farmer list */
 .pool-farmer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 12px;
   width: 100%;
+  min-width: 0;
   margin-top: 8px;
-  padding: 12px;
-  border: 1px solid #e8ece5;
-  border-radius: 9px;
+  padding: 13px 14px;
+  border: 1px solid #e5ebe1;
+  border-radius: 10px;
   background: #fff;
   color: #29452e;
   text-align: left;
   cursor: pointer;
 }
 
-.pool-farmer.selected {
-  border-color: #8eae85;
-  background: #f0f6ed;
-}
+.pool-farmer:hover { background: #f8fbf6; border-color: #cbdcc5; }
+.pool-farmer.selected { border-color: #8eae85; background: #f0f6ed; }
+.pool-farmer span:first-child { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.pool-farmer strong { font-size: 12px; line-height: 1.45; }
+.pool-farmer small { color: #839080; font-size: 11px; line-height: 1.5; overflow-wrap: anywhere; }
 
-.pool-farmer span:first-child {
-  display: grid;
-  gap: 5px;
-  min-width: 0;
-}
-
-.pool-farmer strong {
-  font-size: 12px;
-}
-
-.pool-farmer small {
-  color: #839080;
-  font-size: 10px;
-  overflow-wrap: anywhere;
-}
-
-.pool-map-card {
-  padding: 0;
-  overflow: hidden;
-}
-
+/* Map and its header */
+.pool-map-card { min-width: 0; padding: 0; overflow: hidden; }
 .pool-section-heading {
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 12px;
-  padding: 19px;
+  padding: 20px;
 }
-
-.pool-section-heading h2 {
-  margin-bottom: 6px;
-}
-
+.pool-section-heading h2 { margin: 0 0 7px; }
+.pool-section-heading p { margin: 0; color: #748274; font-size: 12px; line-height: 1.6; }
 .pool-leaflet-map {
-  width: 100%;
-  height: 520px;
-  background: #e4e9df;
+  position: relative;
   z-index: 1;
+  width: 100%;
+  height: 440px;
+  min-width: 0;
+  background: #e4e9df;
 }
-
 .pool-leaflet-map .leaflet-container {
-  font-family: inherit;
+  width: 100%;
+  height: 100%;
+  font-family: "DM Sans", sans-serif;
 }
-
 .pool-capture-label {
   padding: 7px 10px;
   border-radius: 8px;
@@ -293,17 +338,18 @@
   font-weight: 600;
 }
 
+/* Candidate pool cards and messages */
 .pool-candidate {
   margin-top: 12px;
   overflow: hidden;
   border: 1px solid #e5ebe0;
   border-radius: 10px;
+  background: #fff;
 }
-
 .pool-candidate-select {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
+  flex-wrap: wrap;
   gap: 12px;
   width: 100%;
   padding: 14px;
@@ -313,87 +359,1541 @@
   text-align: left;
   cursor: pointer;
 }
-
-.pool-candidate-select strong {
-  color: #315438;
-}
-
-.pool-candidate-select span {
-  font-size: 11px;
-}
-
+.pool-candidate-select:hover { background: #f2f7ef; }
+.pool-candidate-select strong { color: #315438; }
+.pool-candidate-select span { font-size: 12px; }
 .pool-candidate-detail {
   display: grid;
-  gap: 6px;
-  padding: 14px;
+  gap: 8px;
+  padding: 15px;
   border-top: 1px solid #e8ece5;
 }
-
-.pool-candidate-detail p {
-  margin: 3px 0;
-  font-size: 11px;
-}
-
+.pool-candidate-detail p { margin: 3px 0; font-size: 12px; line-height: 1.6; }
 .pool-alert,
 .pool-message {
   display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 12px 14px;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 13px 15px;
   border-radius: 9px;
   font-size: 12px;
+  line-height: 1.6;
+}
+.pool-alert { background: #fbefea; color: #9a493a; }
+.pool-message { background: #edf5e9; color: #386544; }
+.pool-result-summary { padding: 10px 0; color: #6d8269; font-size: 12px; line-height: 1.6; }
+
+/* If the component uses generic card containers around pooling content */
+.pooling-page .panel,
+.pooling-page .stat-card,
+.pooling-page .detail-hero {
+  background: rgba(255,255,255,.97);
+  border-color: #e3e9df;
 }
 
-.pool-alert {
-  background: #fbefea;
-  color: #9a493a;
+@media (max-width: 1150px) {
+  .pooling-workspace { grid-template-columns: minmax(0, 1fr); }
+  .pool-left-column { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .pooling-page { gap: 18px; }
 }
 
-.pool-message {
-  background: #edf5e9;
-  color: #386544;
+@media (max-width: 700px) {
+  .pooling-heading { align-items: flex-start; flex-direction: column; }
+  .pool-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .pool-left-column { grid-template-columns: minmax(0, 1fr); }
+  .pool-card { padding: 15px; }
+  .pool-map-card { padding: 0; }
+  .pool-section-heading { padding: 15px; }
+  .pool-leaflet-map { height: 340px; }
+  .pool-metrics article { padding: 13px; }
 }
 
-.pool-result-summary {
-  padding: 10px 0;
-  color: #6d8269;
-  font-size: 12px;
+
+
+/* ==========================================================
+   Farmer Pooling UI polish — CSS-only overrides
+   Appended intentionally to preserve all existing portal pages.
+   ========================================================== */
+
+/* Keep the farm photograph limited to the existing portal background,
+   but make the pooling content easier to read. */
+.main-area:has(.pooling-page) {
+  background-image:
+    linear-gradient(rgba(246, 247, 243, .90), rgba(246, 247, 243, .90)),
+    url('/farmer-spraying.jpg') !important;
+  background-attachment: scroll, scroll !important;
 }
 
-@media (max-width: 1000px) {
-  .pooling-workspace {
-    grid-template-columns: 1fr;
-  }
+/* Pooling page rhythm and heading */
+.pooling-page {
+  gap: 22px !important;
+  max-width: 100% !important;
+  color: #203b2b !important;
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+}
 
-  .pool-left-column {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: start;
-  }
+.pooling-page .pooling-heading,
+.pooling-page .page-heading {
+  align-items: center !important;
+  gap: 18px !important;
+  margin-bottom: 2px !important;
+}
 
-  .pool-metrics {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+.pooling-page .pooling-heading > div,
+.pooling-page .page-heading > div {
+  min-width: 0;
+}
+
+.pooling-page h1 {
+  color: #183e2d !important;
+  letter-spacing: -1.1px !important;
+}
+
+.pooling-page p {
+  line-height: 1.6;
+}
+
+/* Metrics should always read as four distinct cards, not inline text. */
+.pooling-page .pool-metrics {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  align-items: stretch !important;
+}
+
+.pooling-page .pool-metrics > *,
+.pooling-page .pool-metrics article,
+.pooling-page .pool-metrics .pool-metric {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  gap: 8px !important;
+  min-width: 0 !important;
+  padding: 18px !important;
+  background: rgba(255, 255, 255, .97) !important;
+  border: 1px solid #e4eae0 !important;
+  border-radius: 14px !important;
+  box-shadow: 0 5px 18px rgba(28, 55, 40, .06) !important;
+}
+
+.pooling-page .pool-metrics strong,
+.pooling-page .pool-metrics b {
+  color: #203b2b !important;
+  font-family: Manrope, sans-serif !important;
+  font-size: 25px !important;
+  line-height: 1.2 !important;
+  font-weight: 800 !important;
+}
+
+.pooling-page .pool-metrics span {
+  display: block !important;
+  color: #758276 !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+}
+
+/* Two-column working area: controls and farmer list beside map/results. */
+.pooling-page .pooling-workspace {
+  display: grid !important;
+  grid-template-columns: minmax(310px, .88fr) minmax(0, 1.55fr) !important;
+  align-items: start !important;
+  gap: 20px !important;
+}
+
+.pooling-page .pool-left-column,
+.pooling-page .pool-right-column {
+  display: grid !important;
+  gap: 18px !important;
+  align-content: start !important;
+  min-width: 0 !important;
+}
+
+.pooling-page .pool-card,
+.pooling-page .pool-map-card,
+.pooling-page .panel {
+  min-width: 0 !important;
+  background: rgba(255, 255, 255, .97) !important;
+  border: 1px solid #e3e9df !important;
+  border-radius: 15px !important;
+  box-shadow: 0 5px 20px rgba(32, 59, 43, .06) !important;
+  color: #29452e !important;
+}
+
+.pooling-page .pool-card {
+  padding: 21px !important;
+}
+
+.pooling-page .pool-card h2,
+.pooling-page .pool-map-card h2,
+.pooling-page .pool-card h3 {
+  color: #203b2b !important;
+  margin-top: 0 !important;
+}
+
+.pooling-page .pool-card h2 {
+  font-size: 18px !important;
+  margin-bottom: 15px !important;
+}
+
+.pooling-page .pool-card h3 {
+  font-size: 14px !important;
+  margin-bottom: 8px !important;
+}
+
+/* Force form controls into a predictable vertical rhythm. */
+.pooling-page .pool-card form {
+  display: grid !important;
+  gap: 14px !important;
+}
+
+.pooling-page .pool-card label {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 7px !important;
+  width: 100% !important;
+  margin: 0 0 15px !important;
+  color: #4f6352 !important;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+  font-weight: 600 !important;
+}
+
+.pooling-page .pool-card input:not([type="range"]),
+.pooling-page .pool-card select,
+.pooling-page .pool-card textarea {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  min-height: 42px !important;
+  padding: 10px 12px !important;
+  border: 1px solid #dce5d8 !important;
+  border-radius: 9px !important;
+  background: #fbfcf9 !important;
+  color: #29452e !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+}
+
+.pooling-page .pool-card input[type="range"] {
+  width: 100% !important;
+  accent-color: #54805a !important;
+}
+
+.pooling-page .pool-card input:focus,
+.pooling-page .pool-card select:focus,
+.pooling-page .pool-card textarea:focus {
+  outline: none !important;
+  border-color: #80a77f !important;
+  box-shadow: 0 0 0 3px rgba(127, 167, 123, .17) !important;
+}
+
+.pooling-page .pool-button,
+.pooling-page .pool-card button {
+  min-height: 40px !important;
+  border-radius: 9px !important;
+  font-family: "DM Sans", sans-serif !important;
+  font-weight: 700 !important;
+  cursor: pointer;
+}
+
+.pooling-page .pool-button.primary,
+.pooling-page .pool-card button.primary {
+  display: flex !important;
+  width: 100% !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  padding: 11px 14px !important;
+  background: #183e2d !important;
+  border: 1px solid #183e2d !important;
+  color: #fff !important;
+}
+
+/* Farmer list: separate, readable rows with enough room for metadata. */
+.pooling-page .pool-farmer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 8px 0 0 !important;
+  padding: 13px 14px !important;
+  border: 1px solid #e5ebe1 !important;
+  border-radius: 10px !important;
+  background: #fff !important;
+  color: #29452e !important;
+  text-align: left !important;
+  white-space: normal !important;
+  line-height: 1.45 !important;
+}
+
+.pooling-page .pool-farmer > span,
+.pooling-page .pool-farmer > div {
+  min-width: 0 !important;
+}
+
+.pooling-page .pool-farmer strong,
+.pooling-page .pool-farmer b {
+  display: block !important;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+  overflow-wrap: anywhere !important;
+}
+
+.pooling-page .pool-farmer small {
+  display: block !important;
+  margin-top: 4px !important;
+  color: #839080 !important;
+  font-size: 11px !important;
+  line-height: 1.5 !important;
+  overflow-wrap: anywhere !important;
+}
+
+.pooling-page .pool-farmer.selected {
+  border-color: #8eae85 !important;
+  background: #f0f6ed !important;
+}
+
+/* Map should fill its card without pushing the results out of alignment. */
+.pooling-page .pool-map-card {
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.pooling-page .pool-section-heading {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  padding: 20px !important;
+}
+
+.pooling-page .pool-section-heading h2 {
+  margin: 0 0 7px !important;
+}
+
+.pooling-page .pool-section-heading p {
+  margin: 0 !important;
+  color: #748274 !important;
+  font-size: 12px !important;
+}
+
+.pooling-page .pool-leaflet-map {
+  position: relative !important;
+  z-index: 1 !important;
+  width: 100% !important;
+  height: 430px !important;
+  min-width: 0 !important;
+  background: #e4e9df !important;
+}
+
+.pooling-page .pool-leaflet-map .leaflet-container {
+  width: 100% !important;
+  height: 100% !important;
+  font-family: "DM Sans", sans-serif !important;
+}
+
+.pooling-page .pool-candidate {
+  margin-top: 12px !important;
+  overflow: hidden !important;
+  border: 1px solid #e5ebe0 !important;
+  border-radius: 11px !important;
+  background: #fff !important;
+}
+
+.pooling-page .pool-candidate-select {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 10px 14px !important;
+  width: 100% !important;
+  padding: 14px !important;
+  border: 0 !important;
+  background: #fbfcf9 !important;
+  color: #476148 !important;
+  text-align: left !important;
+  white-space: normal !important;
+}
+
+.pooling-page .pool-candidate-detail {
+  display: grid !important;
+  gap: 8px !important;
+  padding: 15px !important;
+  border-top: 1px solid #e8ece5 !important;
+}
+
+.pooling-page .pool-alert,
+.pooling-page .pool-message {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  padding: 13px 15px !important;
+  border-radius: 9px !important;
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+}
+
+.pooling-page .pool-alert { background: #fbefea !important; color: #9a493a !important; }
+.pooling-page .pool-message { background: #edf5e9 !important; color: #386544 !important; }
+
+/* Prevent the portal-wide translucent card treatment from affecting pooling. */
+.pooling-page .panel,
+.pooling-page .stat-card,
+.pooling-page .detail-hero,
+.pooling-page .form-panel,
+.pooling-page .aside-note {
+  background: #fff !important;
+}
+
+/* Responsive layout */
+@media (max-width: 1150px) {
+  .pooling-page .pooling-workspace {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .pooling-page .pool-left-column {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: start !important;
   }
 }
 
-@media (max-width: 600px) {
-  .pooling-heading {
-    align-items: flex-start;
-    flex-direction: column;
+@media (max-width: 760px) {
+  .pooling-page .pool-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .pooling-page .pool-left-column {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .pooling-page .pool-card {
+    padding: 15px !important;
+  }
+  .pooling-page .pool-section-heading {
+    padding: 15px !important;
+  }
+  .pooling-page .pool-leaflet-map {
+    height: 340px !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .pooling-page .pool-metrics {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .pooling-page .pooling-heading,
+  .pooling-page .page-heading {
+    align-items: flex-start !important;
+    flex-direction: column !important;
+  }
+}
+
+
+
+/* Pooling metrics: icon and label/value text on one aligned row.
+   Scoped to the Farmer Pooling page only. */
+.pooling-page .pool-metrics > *,
+.pooling-page .pool-metrics article,
+.pooling-page .pool-metrics .pool-metric {
+  display: grid !important;
+  grid-template-columns: 30px minmax(0, 1fr) !important;
+  grid-template-rows: auto auto !important;
+  align-items: center !important;
+  justify-content: start !important;
+  column-gap: 12px !important;
+  row-gap: 3px !important;
+  padding: 18px !important;
+}
+
+.pooling-page .pool-metrics > * > svg,
+.pooling-page .pool-metrics article > svg,
+.pooling-page .pool-metrics .pool-metric > svg {
+  grid-column: 1 !important;
+  grid-row: 1 / span 2 !important;
+  width: 23px !important;
+  height: 23px !important;
+  align-self: center !important;
+  margin: 0 !important;
+}
+
+.pooling-page .pool-metrics > * > span,
+.pooling-page .pool-metrics article > span,
+.pooling-page .pool-metrics .pool-metric > span {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  display: block !important;
+  align-self: end !important;
+  margin: 0 !important;
+  color: #526653 !important;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+  overflow-wrap: anywhere !important;
+}
+
+.pooling-page .pool-metrics > * > strong,
+.pooling-page .pool-metrics article > strong,
+.pooling-page .pool-metrics .pool-metric > strong,
+.pooling-page .pool-metrics > * > b,
+.pooling-page .pool-metrics article > b,
+.pooling-page .pool-metrics .pool-metric > b {
+  grid-column: 2 !important;
+  grid-row: 2 !important;
+  display: block !important;
+  align-self: start !important;
+  margin: 0 !important;
+  color: #203b2b !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 1.45 !important;
+  overflow-wrap: anywhere !important;
+}
+
+@media (max-width: 760px) {
+  .pooling-page .pool-metrics > *,
+  .pooling-page .pool-metrics article,
+  .pooling-page .pool-metrics .pool-metric {
+    grid-template-columns: 26px minmax(0, 1fr) !important;
+    column-gap: 9px !important;
+    padding: 13px !important;
   }
 
-  .pool-left-column {
-    grid-template-columns: 1fr;
+  .pooling-page .pool-metrics > * > span,
+  .pooling-page .pool-metrics article > span,
+  .pooling-page .pool-metrics .pool-metric > span {
+    font-size: 13px !important;
   }
 
-  .pool-leaflet-map {
-    height: 360px;
+  .pooling-page .pool-metrics > * > strong,
+  .pooling-page .pool-metrics article > strong,
+  .pooling-page .pool-metrics .pool-metric > strong,
+  .pooling-page .pool-metrics > * > b,
+  .pooling-page .pool-metrics article > b,
+  .pooling-page .pool-metrics .pool-metric > b {
+    font-size: 15px !important;
+  }
+}
+
+
+
+/* ==========================================================
+   Exact FarmerPooling.jsx selectors
+   These overrides target the class names actually used by the
+   component, without changing its React state or functionality.
+   ========================================================== */
+
+.pooling-page .pool-metrics-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  min-width: 0 !important;
+}
+
+.pooling-page .pool-metric {
+  display: grid !important;
+  grid-template-columns: 30px minmax(0, 1fr) !important;
+  grid-template-rows: auto auto auto !important;
+  align-items: center !important;
+  column-gap: 10px !important;
+  row-gap: 2px !important;
+  min-width: 0 !important;
+  padding: 15px !important;
+  background: rgba(255,255,255,.97) !important;
+  border: 1px solid #e3e9df !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 14px rgba(35,65,42,.05) !important;
+}
+
+.pooling-page .pool-metric-icon {
+  grid-column: 1 !important;
+  grid-row: 1 / span 3 !important;
+  display: grid !important;
+  place-items: center !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 9px !important;
+  background: #edf2e8 !important;
+  color: #4d704b !important;
+}
+
+.pooling-page .pool-metric > span {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+  color: #657567 !important;
+  overflow-wrap: anywhere !important;
+}
+
+.pooling-page .pool-metric > strong {
+  grid-column: 2 !important;
+  grid-row: 2 !important;
+  margin: 0 !important;
+  font-size: 17px !important;
+  line-height: 1.35 !important;
+  color: #203b2b !important;
+  overflow-wrap: anywhere !important;
+}
+
+.pooling-page .pool-metric > small {
+  grid-column: 2 !important;
+  grid-row: 3 !important;
+  font-size: 10px !important;
+  line-height: 1.4 !important;
+  color: #89958a !important;
+  overflow-wrap: anywhere !important;
+}
+
+/* The actual JSX uses pool-left-column and pool-map-column. */
+.pooling-page .pooling-workspace {
+  display: grid !important;
+  grid-template-columns: minmax(320px, .88fr) minmax(0, 1.55fr) !important;
+  align-items: start !important;
+  gap: 18px !important;
+}
+
+.pooling-page .pool-left-column,
+.pooling-page .pool-map-column {
+  display: grid !important;
+  align-content: start !important;
+  gap: 16px !important;
+  min-width: 0 !important;
+}
+
+/* Configure pooling panel: compact and consistent typography. */
+.pooling-page .pool-control-panel,
+.pooling-page .pool-farmer-panel,
+.pooling-page .pool-saved-panel,
+.pooling-page .pool-map-panel,
+.pooling-page .pool-results-panel,
+.pooling-page .selected-farmer-card {
+  min-width: 0 !important;
+  padding: 18px !important;
+  background: rgba(255,255,255,.97) !important;
+  border: 1px solid #e3e9df !important;
+  border-radius: 14px !important;
+  box-shadow: 0 4px 16px rgba(35,65,42,.05) !important;
+}
+
+.pooling-page .pool-section-title {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  margin-bottom: 16px !important;
+}
+
+.pooling-page .pool-section-title h3,
+.pooling-page .pool-map-toolbar h3 {
+  margin: 0 0 5px !important;
+  color: #203b2b !important;
+  font-size: 15px !important;
+  line-height: 1.4 !important;
+}
+
+.pooling-page .pool-section-title p {
+  margin: 0 !important;
+  color: #7b897d !important;
+  font-size: 11px !important;
+  line-height: 1.5 !important;
+}
+
+/* Make each field stack cleanly; keep the radius label/value on one row. */
+.pooling-page .pool-control-panel .pool-field {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 6px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 0 14px !important;
+  color: #526653 !important;
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+  font-weight: 500 !important;
+}
+
+.pooling-page .pool-control-panel .pool-label-row {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+.pooling-page .pool-control-panel .pool-label-row label {
+  display: block !important;
+  margin: 0 !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+.pooling-page .pool-control-panel .pool-label-row b {
+  flex-shrink: 0 !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: #31583b !important;
+}
+
+.pooling-page .pool-control-panel input:not([type="range"]),
+.pooling-page .pool-control-panel select,
+.pooling-page .pool-control-panel textarea {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  min-height: 36px !important;
+  padding: 8px 10px !important;
+  border: 1px solid #dce5d8 !important;
+  border-radius: 7px !important;
+  background: #fff !important;
+  color: #29452e !important;
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+}
+
+.pooling-page .pool-control-panel input[type="range"] {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 4px 0 2px !important;
+  accent-color: #54805a !important;
+}
+
+.pooling-page .pool-control-panel .range-caption {
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  margin-top: 0 !important;
+  color: #788679 !important;
+  font-size: 10px !important;
+  line-height: 1.4 !important;
+}
+
+.pooling-page .pool-control-panel .pool-control-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  align-items: start !important;
+  margin: 0 0 2px !important;
+}
+
+.pooling-page .pool-control-panel .pool-control-grid .pool-field {
+  min-width: 0 !important;
+  margin-bottom: 12px !important;
+}
+
+.pooling-page .pool-control-panel .pool-field small {
+  display: block !important;
+  margin-top: 1px !important;
+  color: #7b897d !important;
+  font-size: 10px !important;
+  line-height: 1.45 !important;
+  font-weight: 400 !important;
+  overflow-wrap: anywhere !important;
+}
+
+.pooling-page .pool-control-panel .pool-run-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  width: 100% !important;
+  min-height: 42px !important;
+  margin: 4px 0 12px !important;
+  padding: 10px 12px !important;
+  border-radius: 9px !important;
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+  white-space: normal !important;
+}
+
+.pooling-page .pool-control-panel .pool-method-note {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 9px !important;
+  margin-top: 2px !important;
+  padding: 11px 12px !important;
+  border: 1px solid #e6ecdf !important;
+  border-radius: 9px !important;
+  background: #f7f9f4 !important;
+  color: #6d806b !important;
+}
+
+.pooling-page .pool-control-panel .pool-method-note > svg {
+  flex: 0 0 auto !important;
+  margin-top: 2px !important;
+}
+
+.pooling-page .pool-control-panel .pool-method-note p {
+  margin: 0 !important;
+  color: #6e7d70 !important;
+  font-size: 11px !important;
+  line-height: 1.55 !important;
+  overflow-wrap: anywhere !important;
+}
+
+/* Keep map toolbar and map aligned within the right-hand panel. */
+.pooling-page .pool-map-panel {
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.pooling-page .pool-map-toolbar {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 14px !important;
+  padding: 18px !important;
+}
+
+.pooling-page .pool-map-toolbar p {
+  margin: 0 !important;
+  color: #748274 !important;
+  font-size: 12px !important;
+  line-height: 1.55 !important;
+}
+
+.pooling-page .map-toolbar-actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+}
+
+.pooling-page .pool-map {
+  min-width: 0 !important;
+}
+
+.pooling-page .pool-leaflet-map {
+  width: 100% !important;
+  height: 420px !important;
+}
+
+/* Farmer directory rows: protect against text collision. */
+.pooling-page .pool-farmer-row {
+  display: grid !important;
+  grid-template-columns: 34px minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 10px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  padding: 11px !important;
+  margin: 0 0 8px !important;
+  border: 1px solid #e5ebe1 !important;
+  border-radius: 10px !important;
+  background: #fff !important;
+  text-align: left !important;
+  white-space: normal !important;
+}
+
+.pooling-page .pool-farmer-info {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  min-width: 0 !important;
+}
+
+.pooling-page .pool-farmer-info b {
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+  overflow-wrap: anywhere !important;
+}
+
+.pooling-page .pool-farmer-info small,
+.pooling-page .pool-farmer-tags {
+  font-size: 10px !important;
+  line-height: 1.45 !important;
+  overflow-wrap: anywhere !important;
+}
+
+.pooling-page .pool-farmer-acres {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  white-space: nowrap !important;
+  font-size: 11px !important;
+}
+
+/* Responsive layout */
+@media (max-width: 1150px) {
+  .pooling-page .pooling-workspace {
+    grid-template-columns: minmax(0, 1fr) !important;
   }
 
-  .pool-card {
-    padding: 14px;
+  .pooling-page .pool-left-column {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: start !important;
   }
 
-  .pool-metrics article {
-    padding: 13px;
+  .pooling-page .pool-control-panel {
+    grid-column: 1 / -1 !important;
   }
+}
+
+@media (max-width: 700px) {
+  .pooling-page .pool-metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .pooling-page .pool-left-column {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .pooling-page .pool-control-panel,
+  .pooling-page .pool-farmer-panel,
+  .pooling-page .pool-saved-panel {
+    padding: 14px !important;
+  }
+
+  .pooling-page .pool-control-panel .pool-control-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .pooling-page .pool-leaflet-map {
+    height: 340px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .pooling-page .pool-metrics-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .pooling-page .pool-control-panel .pool-control-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .pooling-page .pool-map-toolbar {
+    flex-direction: column !important;
+  }
+}
+
+
+
+/* ==========================================================
+   Farmer Pooling — candidate results visual polish
+   Targets the exact class names used by FarmerPooling.jsx.
+   Appended at the end to override older conflicting rules.
+   ========================================================== */
+
+.pooling-page .pool-results-panel {
+  padding: 26px !important;
+  border: 1px solid #e2e9de !important;
+  border-radius: 18px !important;
+  background: rgba(255, 255, 255, .98) !important;
+  box-shadow: 0 10px 32px rgba(31, 61, 39, .07) !important;
+}
+
+.pooling-page .pool-results-heading {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 16px !important;
+  margin-bottom: 22px !important;
+}
+
+.pooling-page .pool-results-heading > div {
+  flex: 1 1 300px !important;
+  min-width: 0 !important;
+}
+
+.pooling-page .pool-results-heading .eyebrow {
+  display: inline-block !important;
+  margin-bottom: 9px !important;
+  color: #688367 !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  letter-spacing: 1.3px !important;
+}
+
+.pooling-page .pool-results-heading h3 {
+  margin: 0 0 8px !important;
+  color: #1c3d2b !important;
+  font: 800 21px/1.3 Manrope, sans-serif !important;
+  letter-spacing: -.45px !important;
+}
+
+.pooling-page .pool-results-heading p {
+  margin: 0 !important;
+  max-width: 620px !important;
+  color: #718174 !important;
+  font-size: 12px !important;
+  line-height: 1.7 !important;
+}
+
+.pooling-page .pool-run-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  flex: 0 0 auto !important;
+  padding: 9px 12px !important;
+  border: 1px solid #d8e8d5 !important;
+  border-radius: 999px !important;
+  background: #eff7ec !important;
+  color: #3d7048 !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+}
+
+.pooling-page .pool-run-pill svg {
+  flex-shrink: 0 !important;
+}
+
+.pooling-page .pool-results-stats {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  margin: 0 0 24px !important;
+}
+
+.pooling-page .pool-results-stats > div {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  gap: 7px !important;
+  min-width: 0 !important;
+  min-height: 95px !important;
+  padding: 17px !important;
+  border: 1px solid #e5ebe1 !important;
+  border-radius: 13px !important;
+  background: linear-gradient(145deg, #fbfcf9, #f5f8f2) !important;
+}
+
+.pooling-page .pool-results-stats b {
+  display: block !important;
+  color: #21442e !important;
+  font: 800 25px/1.1 Manrope, sans-serif !important;
+  letter-spacing: -.7px !important;
+}
+
+.pooling-page .pool-results-stats span {
+  display: block !important;
+  color: #788779 !important;
+  font-size: 11px !important;
+  line-height: 1.45 !important;
+  overflow-wrap: anywhere !important;
+}
+
+/* Candidate cards */
+.pooling-page .pool-candidate-list {
+  display: grid !important;
+  gap: 13px !important;
+  margin: 0 !important;
+}
+
+.pooling-page .pool-candidate {
+  min-width: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  border: 1px solid #e0e8dc !important;
+  border-radius: 14px !important;
+  background: #fff !important;
+  box-shadow: 0 3px 10px rgba(32, 59, 43, .035) !important;
+  transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease !important;
+}
+
+.pooling-page .pool-candidate:hover {
+  border-color: #bfd4b8 !important;
+  box-shadow: 0 7px 20px rgba(32, 59, 43, .07) !important;
+}
+
+.pooling-page .pool-candidate.active {
+  border-color: #9fbe96 !important;
+  box-shadow: 0 0 0 3px rgba(127, 167, 123, .12) !important;
+}
+
+.pooling-page .pool-candidate-main {
+  display: grid !important;
+  grid-template-columns: 38px minmax(0, 1fr) 20px !important;
+  align-items: center !important;
+  gap: 14px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 106px !important;
+  margin: 0 !important;
+  padding: 17px 18px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  color: #29452e !important;
+  text-align: left !important;
+  white-space: normal !important;
+  cursor: pointer !important;
+  box-shadow: none !important;
+}
+
+.pooling-page .pool-candidate-main:hover {
+  background: #fbfdf9 !important;
+}
+
+.pooling-page .candidate-rank {
+  display: grid !important;
+  place-items: center !important;
+  width: 38px !important;
+  height: 38px !important;
+  border: 1px solid #dce8d7 !important;
+  border-radius: 11px !important;
+  background: #edf5e9 !important;
+  color: #3f7047 !important;
+  font: 800 12px/1 Manrope, sans-serif !important;
+  flex-shrink: 0 !important;
+}
+
+.pooling-page .candidate-content {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  align-items: start !important;
+  gap: 8px !important;
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+.pooling-page .candidate-title-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 8px 12px !important;
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+.pooling-page .candidate-title-row > b {
+  min-width: 0 !important;
+  color: #23442e !important;
+  font: 800 14px/1.4 Manrope, sans-serif !important;
+  overflow-wrap: anywhere !important;
+}
+
+.pooling-page .pool-status {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 5px 9px !important;
+  border: 1px solid #dce9d8 !important;
+  border-radius: 999px !important;
+  background: #f0f7ed !important;
+  color: #4b7549 !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  white-space: nowrap !important;
+}
+
+.pooling-page .pool-status.needs_review {
+  border-color: #f0dfb9 !important;
+  background: #fff7e7 !important;
+  color: #9a712d !important;
+}
+
+.pooling-page .candidate-content > small {
+  display: block !important;
+  margin: 0 !important;
+  color: #748174 !important;
+  font-size: 11px !important;
+  line-height: 1.6 !important;
+  overflow-wrap: anywhere !important;
+}
+
+.pooling-page .candidate-progress {
+  display: block !important;
+  width: 100% !important;
+  height: 5px !important;
+  margin: 1px 0 !important;
+  overflow: hidden !important;
+  border-radius: 999px !important;
+  background: #edf1e9 !important;
+}
+
+.pooling-page .candidate-progress i {
+  display: block !important;
+  height: 100% !important;
+  border-radius: inherit !important;
+  background: linear-gradient(90deg, #6b9661, #a3c58d) !important;
+}
+
+.pooling-page .candidate-micro {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 4px !important;
+  color: #7a887a !important;
+  font-size: 11px !important;
+  line-height: 1.5 !important;
+}
+
+.pooling-page .candidate-micro b {
+  color: #315c3b !important;
+  font-weight: 800 !important;
+}
+
+.pooling-page .pool-candidate-main > svg {
+  justify-self: end !important;
+  color: #80917f !important;
+  flex-shrink: 0 !important;
+  transition: transform .18s ease !important;
+}
+
+.pooling-page .pool-candidate.active .pool-candidate-main > svg {
+  color: #47754b !important;
+  transform: rotate(90deg) !important;
+}
+
+/* Expanded candidate details */
+.pooling-page .candidate-expanded {
+  display: grid !important;
+  gap: 18px !important;
+  padding: 20px !important;
+  border-top: 1px solid #e8eee4 !important;
+  background: #fcfdfb !important;
+}
+
+.pooling-page .candidate-score-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+  min-width: 0 !important;
+}
+
+.pooling-page .candidate-score-grid > div {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  gap: 7px !important;
+  min-width: 0 !important;
+  min-height: 77px !important;
+  padding: 13px !important;
+  border: 1px solid #e6ece2 !important;
+  border-radius: 10px !important;
+  background: #fff !important;
+}
+
+.pooling-page .candidate-score-grid span {
+  display: block !important;
+  color: #7a8879 !important;
+  font-size: 10px !important;
+  line-height: 1.45 !important;
+}
+
+.pooling-page .candidate-score-grid b {
+  display: block !important;
+  color: #264831 !important;
+  font: 800 15px/1.35 Manrope, sans-serif !important;
+  overflow-wrap: anywhere !important;
+}
+
+.pooling-page .candidate-reasons {
+  display: grid !important;
+  gap: 9px !important;
+  padding: 14px !important;
+  border: 1px solid #f0e4c9 !important;
+  border-radius: 10px !important;
+  background: #fffaf0 !important;
+}
+
+.pooling-page .candidate-reasons > b {
+  display: block !important;
+  margin-bottom: 1px !important;
+  color: #755b2d !important;
+  font-size: 11px !important;
+}
+
+.pooling-page .candidate-reasons > span {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 8px !important;
+  color: #806d48 !important;
+  font-size: 11px !important;
+  line-height: 1.6 !important;
+  overflow-wrap: anywhere !important;
+}
+
+.pooling-page .candidate-reasons svg {
+  flex: 0 0 auto !important;
+  margin-top: 2px !important;
+  color: #b18a43 !important;
+}
+
+.pooling-page .candidate-expanded .pool-field {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 8px !important;
+  margin: 0 !important;
+  color: #526653 !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  line-height: 1.5 !important;
+}
+
+.pooling-page .candidate-expanded .pool-field input {
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 43px !important;
+  padding: 11px 13px !important;
+  border: 1px solid #dce5d8 !important;
+  border-radius: 9px !important;
+  background: #fff !important;
+  color: #29452e !important;
+  font-size: 12px !important;
+}
+
+.pooling-page .candidate-expanded .btn.primary.full {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 9px !important;
+  width: 100% !important;
+  min-height: 45px !important;
+  margin: 0 !important;
+  padding: 12px 16px !important;
+  border: 1px solid #183e2d !important;
+  border-radius: 10px !important;
+  background: #183e2d !important;
+  color: #fff !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  line-height: 1.4 !important;
+  white-space: normal !important;
+  box-shadow: 0 4px 10px rgba(24, 62, 45, .12) !important;
+}
+
+.pooling-page .candidate-expanded .btn.primary.full:hover {
+  background: #285b3d !important;
+  border-color: #285b3d !important;
+}
+
+/* Unassigned farmers: distinct rows with name, code/village and reason. */
+.pooling-page .unassigned-block {
+  display: grid !important;
+  gap: 0 !important;
+  margin-top: 25px !important;
+  padding-top: 22px !important;
+  border-top: 1px solid #e8ede5 !important;
+}
+
+.pooling-page .unassigned-heading {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 15px !important;
+  margin-bottom: 12px !important;
+}
+
+.pooling-page .unassigned-heading > div {
+  min-width: 0 !important;
+}
+
+.pooling-page .unassigned-heading h4 {
+  margin: 0 0 5px !important;
+  color: #29452e !important;
+  font: 800 14px/1.4 Manrope, sans-serif !important;
+}
+
+.pooling-page .unassigned-heading p {
+  margin: 0 !important;
+  color: #7a887b !important;
+  font-size: 11px !important;
+  line-height: 1.6 !important;
+}
+
+.pooling-page .unassigned-heading > span {
+  display: grid !important;
+  place-items: center !important;
+  flex: 0 0 auto !important;
+  min-width: 32px !important;
+  height: 32px !important;
+  padding: 0 8px !important;
+  border-radius: 10px !important;
+  background: #f1f4ed !important;
+  color: #4c6a4b !important;
+  font: 800 12px/1 Manrope, sans-serif !important;
+}
+
+.pooling-page .unassigned-row {
+  display: grid !important;
+  grid-template-columns: minmax(160px, .8fr) minmax(0, 1.2fr) !important;
+  align-items: center !important;
+  gap: 12px 18px !important;
+  min-width: 0 !important;
+  padding: 13px 14px !important;
+  border-bottom: 1px solid #edf1e9 !important;
+  border-radius: 8px !important;
+  background: #fff !important;
+}
+
+.pooling-page .unassigned-row:nth-child(even) {
+  background: #fafcf8 !important;
+}
+
+.pooling-page .unassigned-row > span {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 4px !important;
+  min-width: 0 !important;
+}
+
+.pooling-page .unassigned-row b {
+  display: block !important;
+  color: #314b37 !important;
+  font-size: 11px !important;
+  line-height: 1.5 !important;
+  overflow-wrap: anywhere !important;
+}
+
+.pooling-page .unassigned-row small {
+  display: block !important;
+  color: #829081 !important;
+  font-size: 10px !important;
+  line-height: 1.5 !important;
+  overflow-wrap: anywhere !important;
+}
+
+.pooling-page .unassigned-row em {
+  display: block !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 7px 10px !important;
+  border-radius: 8px !important;
+  background: #f4f6f1 !important;
+  color: #718070 !important;
+  font-size: 10px !important;
+  font-style: normal !important;
+  line-height: 1.55 !important;
+  overflow-wrap: anywhere !important;
+}
+
+.pooling-page .unassigned-block > .muted {
+  display: block !important;
+  margin-top: 12px !important;
+  color: #849183 !important;
+  font-size: 10px !important;
+}
+
+/* Empty state and narrow screens */
+.pooling-page .pool-empty {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 9px !important;
+  padding: 32px 20px !important;
+  border: 1px dashed #d9e4d4 !important;
+  border-radius: 12px !important;
+  background: #fafcf8 !important;
+  color: #668163 !important;
+  text-align: center !important;
+}
+
+.pooling-page .pool-empty b {
+  color: #35533a !important;
+  font-size: 13px !important;
+}
+
+.pooling-page .pool-empty span {
+  max-width: 420px !important;
+  color: #7d8a7b !important;
+  font-size: 11px !important;
+  line-height: 1.7 !important;
+}
+
+@media (max-width: 760px) {
+  .pooling-page .pool-results-panel {
+    padding: 18px !important;
+  }
+
+  .pooling-page .pool-results-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 9px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .pooling-page .pool-results-stats > div {
+    min-height: 82px !important;
+    padding: 13px !important;
+  }
+
+  .pooling-page .pool-results-stats b {
+    font-size: 22px !important;
+  }
+
+  .pooling-page .pool-candidate-main {
+    grid-template-columns: 32px minmax(0, 1fr) 16px !important;
+    gap: 10px !important;
+    padding: 13px !important;
+  }
+
+  .pooling-page .candidate-rank {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .pooling-page .candidate-expanded {
+    padding: 14px !important;
+    gap: 14px !important;
+  }
+
+  .pooling-page .candidate-score-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .pooling-page .candidate-score-grid > div:last-child {
+    grid-column: 1 / -1 !important;
+  }
+
+  .pooling-page .unassigned-row {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+    padding: 12px 10px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .pooling-page .pool-results-panel {
+    padding: 14px !important;
+  }
+
+  .pooling-page .pool-results-heading h3 {
+    font-size: 19px !important;
+  }
+
+  .pooling-page .pool-run-pill {
+    white-space: normal !important;
+  }
+
+  .pooling-page .candidate-title-row {
+    align-items: flex-start !important;
+    flex-direction: column !important;
+  }
+
+  .pooling-page .candidate-score-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .pooling-page .candidate-score-grid > div:last-child {
+    grid-column: auto !important;
+  }
+}
+
+
+
+/* Hide the extra text/status sections around the Farmer Pooling map.
+   Keep the map itself, including its normal Leaflet attribution. */
+.pooling-page .pool-map-panel > :not(:has(.leaflet-container)) {
+  display: none !important;
+}
+
+.pooling-page .pool-map-panel .leaflet-control-attribution {
+  display: block !important;
 }

@@ -1,3 +1,4 @@
+
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -24,6 +25,7 @@ app.use(cors({
 
 app.use(express.json({ limit: '1mb' }));
 
+// Document uploads
 const uploadDir = path.resolve(process.cwd(), 'server/uploads');
 fs.mkdirSync(uploadDir, { recursive: true });
 
@@ -50,6 +52,7 @@ const upload = multer({
   },
 });
 
+// Authentication middleware
 function auth(req, res, next) {
   const token = (req.headers.authorization || '')
     .replace(/^Bearer\s+/i, '');
@@ -70,6 +73,7 @@ function auth(req, res, next) {
   }
 }
 
+// Activity logging
 function activity(userId, action, entityType, entityId, details = '') {
   db.prepare(`
     INSERT INTO activities
@@ -78,6 +82,7 @@ function activity(userId, action, entityType, entityId, details = '') {
   `).run(userId, action, entityType, entityId, details);
 }
 
+// Farmer validation
 const farmerSchema = z.object({
   full_name: z.string().trim().min(2).max(120),
   phone: z.string().trim().min(8).max(20),
@@ -113,13 +118,13 @@ app.get('/api/health', (_req, res) => {
   });
 });
 
-// Farmer Pooling router — register only once.
+// Farmer Pooling router — register only once
 app.use(
   '/api/pools',
   createPoolsRouter(db, auth, activity)
 );
 
-// Authentication
+// Login
 app.post('/api/auth/login', (req, res) => {
   const schema = z.object({
     email: z.string().email(),
@@ -157,7 +162,7 @@ app.post('/api/auth/login', (req, res) => {
     expiresIn: '8h',
   });
 
-  activity(user.id, 'signedin', 'user', user.id);
+  activity(user.id, 'signed in', 'user', user.id);
 
   res.json({
     token,
@@ -175,7 +180,6 @@ app.get('/api/auth/me', auth, (req, res) => {
   res.json({ user: req.user });
 });
 
-// Dashboard
 app.get('/api/dashboard', auth, (req, res) => {
   const total = db.prepare(`
     SELECT COUNT(*) AS n
@@ -293,7 +297,7 @@ app.get('/api/farmers/:id', auth, (req, res) => {
   res.json({ farmer, documents });
 });
 
-// Create farmer
+// Register farmer
 app.post('/api/farmers', auth, (req, res) => {
   const parsed = farmerSchema.safeParse(req.body);
 
@@ -467,7 +471,7 @@ app.patch('/api/farmers/:id/eligibility', auth, (req, res) => {
   });
 });
 
-// Upload farmer document
+ // Upload farmer document
 app.post(
   '/api/farmers/:id/documents',
   auth,
@@ -615,7 +619,7 @@ app.get('/api/activities', auth, (req, res) => {
   res.json({ activities: rows });
 });
 
-// Error handler must be registered after all routes.
+// Central error handler — must come after routes
 app.use((err, _req, res, _next) => {
   if (err instanceof multer.MulterError) {
     const message = err.code === 'LIMIT_FILE_SIZE'
@@ -630,6 +634,7 @@ app.use((err, _req, res, _next) => {
   });
 });
 
+// Start server
 app.listen(PORT, () => {
   console.log(`ClimateCoins API running at http://localhost:${PORT}`);
 });

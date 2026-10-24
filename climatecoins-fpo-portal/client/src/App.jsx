@@ -19,21 +19,66 @@ function FarmerForm(){const [form,setForm]=useState(initialForm),[busy,setBusy]=
 function FarmerDetail(){const loc=useLocation();const id=loc.pathname.split('/').pop();const [data,setData]=useState(null),[error,setError]=useState(''),[type,setType]=useState('Land record / ownership proof'),[file,setFile]=useState(null),[busy,setBusy]=useState(false),[note,setNote]=useState('');const navigate=useNavigate();async function load(){try{setData(await api(`/farmers/${id}`))}catch(e){setError(e.message)}}useEffect(()=>{load()},[id]);async function upload(e){e.preventDefault();if(!file)return;setBusy(true);try{const fd=new FormData();fd.append('file',file);fd.append('document_type',type);await api(`/farmers/${id}/documents`,{method:'POST',body:fd});setFile(null);e.target.reset();await load()}catch(e){setError(e.message)}finally{setBusy(false)}}async function status(value){try{await api(`/farmers/${id}/eligibility`,{method:'PATCH',body:JSON.stringify({eligibility_status:value,eligibility_notes:note||data.farmer.eligibility_notes||''})});await load()}catch(e){setError(e.message)}}if(error&&!data)return <div className="alert error">{error} <Link to="/farmers">Return to farmers</Link></div>;if(!data)return <div className="loading"><span className="spinner"/>Loading farmer profile…</div>;const f=data.farmer;return <><div className="back-link"><Link to="/farmers">← Back to farmers</Link></div><div className="detail-hero"><div className="detail-person"><div className="detail-avatar">{f.full_name.split(' ').map(x=>x[0]).slice(0,2).join('')}</div><div><div className="eyebrow">{f.farmer_code}</div><h1>{f.full_name}</h1><p><MapPin size={15}/>{f.village}, {f.district}, {f.state}</p></div></div><Badge status={f.eligibility_status}/></div>{error&&<div className="alert error">{error}</div>}<div className="detail-grid"><div className="detail-main"><section className="panel form-panel"><div className="panel-heading"><div><h3>Farm profile</h3><p>Farmer and land information</p></div><div className="small-icon"><Sprout size={18}/></div></div><div className="detail-fields">{[['Phone number',f.phone],['Farm area',`${money(f.acres)} acres`],['Land ownership',f.land_ownership],['Main crops',f.crops||'Not recorded'],['Soil type',f.soil_type||'Not recorded'],['Irrigation',f.irrigation||'Not recorded'],['Farmer consent',f.consent?'Recorded':'Not recorded'],['Registered on',String(f.created_at||'').slice(0,10)]].map(([a,b])=><div className="detail-field" key={a}><span>{a}</span><b>{b}</b></div>)}</div><div className="notes-block"><b>Farming practices</b><p>{f.practices||'No farming practices recorded yet.'}</p></div></section><section className="panel form-panel"><div className="panel-heading"><div><h3>Supporting documents</h3><p>PDF, JPG or PNG · maximum 8 MB per file</p></div><div className="small-icon"><FileText size={18}/></div></div><form className="upload-form" onSubmit={upload}><label className="field">Document type<select value={type} onChange={e=>setType(e.target.value)}><option>Land record / ownership proof</option><option>Farmer identity proof</option><option>Signed farmer consent</option><option>Farm geolocation / plot map</option><option>Baseline farming practices</option><option>Lease agreement</option><option>Other supporting document</option></select></label><label className="upload-drop"><CloudUpload size={23}/><b>{file?file.name:'Choose a document to upload'}</b><span>PDF, JPG or PNG</span><input type="file" accept=".pdf,.png,.jpg,.jpeg" onChange={e=>setFile(e.target.files?.[0]||null)}/></label><button className="btn primary" disabled={!file||busy}>{busy?'Uploading…':'Upload document'}<CloudUpload size={16}/></button></form>{data.documents.length?<div className="document-list">{data.documents.map(d=><div className="document-row" key={d.id}><div className="doc-icon"><FileText size={18}/></div><div className="document-name"><b>{d.document_type}</b><small>{d.file_name}</small></div><Badge status={d.status}/><a className="row-arrow" href={`/api/documents/${d.id}/download`} onClick={async e=>{e.preventDefault();try{const token=getToken();const response=await fetch(`/api/documents/${d.id}/download`,{headers:{Authorization:`Bearer ${token}`}});if(!response.ok)throw new Error('Download failed');const blob=await response.blob();const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=d.file_name;a.click();URL.revokeObjectURL(url)}catch(err){setError(err.message)}}}><Download size={16}/></a></div>)}</div>:<Empty title="No documents uploaded" text="Add land records, farmer consent and other supporting evidence."/>}</section></div><aside className="detail-side"><section className="panel form-panel"><h3>Eligibility review</h3><p className="muted small">Set the current preliminary screening status.</p><label className="field">Status<select value={f.eligibility_status} onChange={e=>status(e.target.value)}><option value="pending">Pending assessment</option><option value="eligible">Initial screening passed</option><option value="review">Needs further review</option><option value="rejected">Not eligible at this stage</option></select></label><label className="field">Review notes<textarea rows="4" value={note||f.eligibility_notes||''} onChange={e=>setNote(e.target.value)} placeholder="Explain outstanding checks…"/></label><button className="btn secondary full" onClick={()=>status(f.eligibility_status)}>Save review notes</button><div className="review-reminder"><AlertCircle size={16}/><p>Check applicable project methodology, land rights, additionality, permanence and safeguards before making a formal determination.</p></div></section><section className="panel form-panel"><h3>Record information</h3><div className="record-meta"><span>Farmer ID</span><b>{f.farmer_code}</b><span>Last updated</span><b>{String(f.updated_at||f.created_at||'').slice(0,16)}</b><span>Documents</span><b>{data.documents.length} uploaded</b></div></section></aside></div></>}
 function Eligibility(){const [farmers,setFarmers]=useState([]),[status,setStatus]=useState('review'),[q,setQ]=useState('');useEffect(()=>{api(`/farmers?status=${status}&q=${encodeURIComponent(q)}`).then(d=>setFarmers(d.farmers)).catch(()=>{})},[status]);async function search(){const d=await api(`/farmers?status=${status}&q=${encodeURIComponent(q)}`);setFarmers(d.farmers)}return <><PageHeading eyebrow="INITIAL SCREENING" title="Eligibility review" subtitle="Review completeness and flag cases that need additional checks."/><div className="review-banner"><div className="review-banner-icon"><ClipboardCheck size={23}/></div><div><b>Preliminary screening only</b><p>This workspace helps organize information. Final project eligibility depends on applicable carbon methodology, land rights, baseline, additionality, safeguards and independent validation.</p></div></div><div className="filter-bar"><div className="search-box"><Search size={17}/><input placeholder="Search farmers…" value={q} onChange={e=>setQ(e.target.value)} onKeyDown={e=>e.key==='Enter'&&search()}/><button onClick={search}>Search</button></div><select value={status} onChange={e=>setStatus(e.target.value)}><option value="review">Needs review</option><option value="pending">Pending</option><option value="eligible">Initially eligible</option><option value="rejected">Not eligible</option></select><span className="results-count">{farmers.length} records</span></div><div className="review-cards">{farmers.map(f=><div className="panel review-card" key={f.id}><div className="review-card-top"><div className="person-avatar">{f.full_name.split(' ').map(x=>x[0]).slice(0,2).join('')}</div><Badge status={f.eligibility_status}/></div><h3>{f.full_name}</h3><span className="farmer-id">{f.farmer_code}</span><div className="review-meta"><span><MapPin size={14}/>{f.village}, {f.district}</span><span><Leaf size={14}/>{money(f.acres)} acres</span><span><FileText size={14}/>{f.document_count} documents</span></div><div className="review-note"><b>Screening note</b><p>{f.eligibility_notes||'No notes recorded. Review the farmer profile and supporting documents.'}</p></div><Link className="btn secondary full" to={`/farmers/${f.id}`}>Review farmer <ChevronRight size={16}/></Link></div>)}{!farmers.length&&<div className="panel"><Empty title="Nothing to review here" text="Choose another status or check back after more farmer profiles are added."/></div>}</div></>}
 function Documents(){const [farmers,setFarmers]=useState([]),[q,setQ]=useState('');useEffect(()=>{api(`/farmers?q=${encodeURIComponent(q)}`).then(d=>setFarmers(d.farmers)).catch(()=>{})},[]);async function search(){setFarmers((await api(`/farmers?q=${encodeURIComponent(q)}`)).farmers)}return <><PageHeading eyebrow="DOCUMENT CENTRE" title="Farmer documents" subtitle="Track supporting documents across your FPO and open each farmer record to upload or review files."/><div className="doc-info-banner"><div className="doc-info-icon"><FileText size={22}/></div><div><b>Keep every record traceable</b><p>Collect signed consent, land ownership or lease records, plot maps, identity records where legally necessary, and evidence of farming practices. Confirm requirements with the chosen methodology and local legal guidance.</p></div></div><div className="filter-bar"><div className="search-box"><Search size={17}/><input placeholder="Find a farmer…" value={q} onChange={e=>setQ(e.target.value)} onKeyDown={e=>e.key==='Enter'&&search()}/><button onClick={search}>Search</button></div><span className="results-count">{farmers.length} farmer records</span></div><section className="panel"><div className="table-wrap"><table><thead><tr><th>FARMER</th><th>LOCATION</th><th>DOCUMENTS</th><th>ELIGIBILITY</th><th>ACTION</th></tr></thead><tbody>{farmers.map(f=><tr key={f.id}><td><div className="person-cell"><div className="person-avatar"><FileText size={16}/></div><div><b>{f.full_name}</b><small>{f.farmer_code}</small></div></div></td><td>{f.village}, {f.district}</td><td><span className="doc-count"><FileText size={14}/>{f.document_count} file(s)</span></td><td><Badge status={f.eligibility_status}/></td><td><Link className="text-link" to={`/farmers/${f.id}`}>Manage files <ArrowUpRight size={15}/></Link></td></tr>)}</tbody></table>{!farmers.length&&<Empty title="No farmer records" text="Register a farmer to start collecting documents."/>}</div></section></>}
-function App(){const [user,setUser]=useState(null),[checking,setChecking]=useState(true);useEffect(()=>{if(getToken())api('/auth/me').then(d=>setUser(d.user)).catch(()=>localStorage.removeItem('cc_token')).finally(()=>setChecking(false));else setChecking(false)},[]);function logout(){localStorage.removeItem('cc_token');setUser(null)}if(checking)return <div className="loading full-loading"><span className="spinner"/>Opening ClimateCoins…</div>;if(!user)return <Login onLogin={setUser}/>;
-return <Shell user={user} onLogout={logout}>
-<Routes>
-  <Route path="/" element={<Dashboard/>}/>
-  <Route path="/farmers" element={<Farmers/>}/>
-  <Route path="/farmers/new" element={<FarmerForm/>}/>
-  <Route path="/farmers/:id" element={<FarmerDetail/>}/>
 
-  {/* NEW: Farmer Pooling page */}
-  <Route path="/farmer-pooling" element={<FarmerPooling/>}/>
+function App() {
+  const [user, setUser] = useState(null);
+  const [checking, setChecking] = useState(true);
 
-  <Route path="/eligibility" element={<Eligibility/>}/>
-  <Route path="/documents" element={<Documents/>}/>
-  <Route path="*" element={<Navigate to="/" replace/>}/>
-</Routes>
-</Shell>
+  useEffect(() => {
+    if (getToken()) {
+      api('/auth/me')
+        .then(d => setUser(d.user))
+        .catch(() => localStorage.removeItem('cc_token'))
+        .finally(() => setChecking(false));
+    } else {
+      setChecking(false);
+    }
+  }, []);
+
+  function logout() {
+    localStorage.removeItem('cc_token');
+    setUser(null);
+  }
+
+  if (checking) {
+    return (
+      <div className="loading full-loading">
+        <span className="spinner" />
+        Opening ClimateCoins…
+      </div>
+    );
+  }
+
+  if (!user) {
+    return <Login onLogin={setUser} />;
+  }
+
+  return (
+    <Shell user={user} onLogout={logout}>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+
+        <Route path="/farmers" element={<Farmers />} />
+        <Route path="/farmers/new" element={<FarmerForm />} />
+        <Route path="/farmers/:id" element={<FarmerDetail />} />
+
+        {/* Friend's new Farmer Pooling feature */}
+        <Route
+          path="/farmer-pooling"
+          element={<FarmerPooling />}
+        />
+
+        <Route path="/eligibility" element={<Eligibility />} />
+        <Route path="/documents" element={<Documents />} />
+
+        <Route
+          path="*"
+          element={<Navigate to="/" replace />}
+        />
+      </Routes>
+    </Shell>
+  );
 }
+
 export default App;
+

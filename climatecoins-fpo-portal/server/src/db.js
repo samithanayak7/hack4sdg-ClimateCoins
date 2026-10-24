@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS activities (
  entity_type TEXT, entity_id INTEGER, details TEXT DEFAULT '', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 `);
+module.exports = db;
 
 /* Farmer Pooling: safe, additive database migrations.
    Keep all existing farmer records intact. */

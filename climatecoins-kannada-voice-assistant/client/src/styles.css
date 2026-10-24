@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&display=swap');
+
+:root{font-family:'DM Sans','Noto Sans Kannada',sans-serif;color:#20362a;background:#f6f7f2;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;--green:#1c5838;--green-dark:#153e2b;--muted:#6c7c70;--line:#e2e8df;--cream:#fbfcf8}
+*{box-sizing:border-box}body{margin:0;min-width:320px;background:#f6f7f2}button,input{font:inherit}button{cursor:pointer}.app-shell{min-height:100vh;max-width:1600px;margin:0 auto}.topbar{height:78px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,76px);background:#fff;border-bottom:1px solid #e9eee6}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}.brand-mark{width:40px;height:40px;display:grid;place-items:center;border-radius:13px;background:#eaf3e9;color:#1c5838}.brand-name{font-size:19px;font-weight:700;letter-spacing:-.7px;line-height:1.1}.brand-name>span{color:#568450}.brand-name small{display:block;font-size:9px;letter-spacing:1.6px;color:#839084;font-weight:700;margin-top:5px}.topbar-right{display:flex;align-items:center;gap:20px}.language-pill,.secure-note{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:#536758}.language-pill{border:1px solid var(--line);padding:8px 12px;border-radius:30px;background:#fafbf8}.hero{min-height:300px;background:#edf3e9;display:flex;position:relative;overflow:hidden;padding:48px clamp(20px,7vw,105px) 40px;align-items:center}.hero-copy{position:relative;z-index:2;max-width:620px}.eyebrow{display:flex;align-items:center;gap:8px;color:#537b4f;font-size:10px;font-weight:700;letter-spacing:1.8px}.eyebrow-dot{width:7px;height:7px;border-radius:50%;background:#6a9d58}.hero h1{font-family:'Noto Sans Kannada','DM Sans',sans-serif;font-size:clamp(27px,3vw,43px);line-height:1.45;letter-spacing:-1.2px;margin:18px 0 8px;color:#1a3e2b;font-weight:700}.hero h1 em{font-style:normal;color:#54834b}.hero-subtitle{font-family:'Noto Sans Kannada',sans-serif;color:#5b6f60;line-height:1.9;font-size:14px;max-width:540px;margin:12px 0 22px}.hero-trust{display:flex;flex-wrap:wrap;gap:16px;color:#45654b;font-size:11px;font-weight:600}.hero-trust span{display:flex;align-items:center;gap:6px}.hero-art{position:absolute;right:5%;top:0;bottom:0;width:36%;overflow:hidden}.sun{position:absolute;width:90px;height:90px;border-radius:50%;background:#f6d99a;right:25%;top:27px;opacity:.9}.hill{position:absolute;bottom:-95px;width:120%;height:210px;border-radius:50% 50% 0 0}.hill-back{right:-28%;background:#c9dfbd;transform:rotate(-10deg)}.hill-front{left:-15%;bottom:-120px;background:#8eb48b;transform:rotate(7deg)}.plant{position:absolute;bottom:38px;width:4px;height:118px;background:#42734b;border-radius:8px;z-index:1}.plant span,.plant i,.plant b{position:absolute;width:48px;height:23px;background:#4c8651;border-radius:100% 0 100% 0;display:block}.plant span{left:-40px;top:24px;transform:rotate(10deg)}.plant i{left:0;top:48px;transform:scaleX(-1) rotate(12deg)}.plant b{left:-36px;top:70px;transform:rotate(14deg);width:39px}.plant-one{right:34%;height:138px}.plant-two{right:14%;height:88px;transform:scale(.8);transform-origin:bottom}.art-caption{position:absolute;bottom:18px;right:7%;z-index:2;display:flex;align-items:center;gap:7px;font-size:10px;color:#305b39;background:#e4efdd;border:1px solid #c9dfc2;padding:8px 11px;border-radius:30px}.workspace{padding:36px clamp(20px,5vw,76px) 60px;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(290px,.85fr);gap:25px;align-items:start}.main-column,.side-column{min-width:0}.section-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px}.section-kicker{font-size:9px;font-weight:700;letter-spacing:1.7px;color:#879587}.section-heading h2{font-family:'Noto Sans Kannada',sans-serif;font-size:22px;margin:7px 0 0;color:#1f3f2c}.status-chip{display:flex;align-items:center;gap:7px;padding:7px 10px;border-radius:30px;background:#fff;border:1px solid var(--line);font-family:'Noto Sans Kannada',sans-serif;font-size:10px;color:#617267}.status-dot{width:6px;height:6px;background:#a7b5a5;border-radius:50%}.status-chip.live{background:#eaf6e9;border-color:#cbe5c7;color:#2e703d}.status-chip.live .status-dot{background:#46a35a;box-shadow:0 0 0 4px #d7eed7}.call-card,.transcript-card,.profile-card,.topics-card{background:#fff;border:1px solid #e5ebe2;border-radius:17px;box-shadow:0 4px 18px #294b2d06}.call-card{min-height:345px;text-align:center;padding:30px 24px 21px;display:flex;align-items:center;flex-direction:column}.voice-orb{width:84px;height:84px;border-radius:50%;background:#e8f2e5;color:#28623d;display:grid;place-items:center;position:relative;margin:3px 0 19px}.orb-active{background:#dcefd9;color:#1d6d3a}.orb-ring{position:absolute;border:1px solid #b9d8b4;border-radius:50%;inset:-9px;opacity:.7}.ring-two{inset:-17px;opacity:.35}.orb-active .ring-one{animation:pulse 1.8s infinite}.orb-active .ring-two{animation:pulse 1.8s infinite .4s}.orb-loading{color:#64895b}.call-card h3{font-family:'Noto Sans Kannada',sans-serif;font-size:19px;margin:4px 0 8px;color:#203e2c}.call-instructions{font-family:'Noto Sans Kannada',sans-serif;font-size:12px;color:#79877a;line-height:1.8;max-width:420px;margin:0 0 22px}.primary-call-button{display:flex;align-items:center;justify-content:center;gap:10px;background:#1d5838;color:#fff;border:0;border-radius:9px;padding:14px 20px;font-size:13px;font-weight:700;box-shadow:0 5px 12px #1d58382a;transition:transform .15s,background .15s}.primary-call-button:hover{background:#17472d;transform:translateY(-1px)}.call-controls{display:flex;gap:10px}.mute-button,.end-button{display:flex;align-items:center;gap:8px;padding:11px 16px;border-radius:9px;font-weight:600;font-size:12px}.mute-button{background:#f5f7f2;border:1px solid var(--line);color:#405d48}.end-button{background:#b8403a;color:#fff;border:1px solid #b8403a}.call-footnote{display:flex;align-items:center;gap:6px;font-size:10px;color:#879488;margin-top:22px}.error-banner{max-width:540px;width:100%;display:flex;align-items:flex-start;gap:8px;text-align:left;margin-top:14px;padding:10px 12px;background:#fff2ef;border:1px solid #f3d1cb;border-radius:9px;color:#9a3c31;font-size:11px;line-height:1.5}.transcript-card{margin-top:20px;overflow:hidden}.transcript-header{height:57px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #edf0eb}.transcript-header>div{display:flex;align-items:center;gap:9px;color:#4f7b4d}.transcript-header h3{font-family:'Noto Sans Kannada',sans-serif;font-size:13px;color:#294431;margin:0}.transcript-header>span{font-size:9px;letter-spacing:1.2px;color:#99a399;font-weight:700}.transcript-body{height:230px;overflow:auto;padding:16px}.empty-transcript{height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;color:#829083}.empty-icon{width:40px;height:40px;display:grid;place-items:center;background:#f2f6ef;border-radius:13px;color:#6d9268;margin-bottom:8px}.empty-transcript p{font-family:'Noto Sans Kannada',sans-serif;font-size:12px;margin:3px 0 7px}.empty-transcript span{font-size:10px;color:#a1aaa0}.message-row{display:flex;flex-direction:column;margin-bottom:13px;max-width:90%}.from-farmer{margin-left:auto;align-items:flex-end}.from-agent{align-items:flex-start}.message-label{font-family:'Noto Sans Kannada',sans-serif;font-size:10px;color:#879587;margin-bottom:5px}.message-bubble{font-family:'Noto Sans Kannada',sans-serif;font-size:12px;line-height:1.8;background:#f2f5ef;border-radius:12px 12px 12px 3px;padding:10px 12px;color:#314b38;white-space:pre-wrap}.from-farmer .message-bubble{background:#e4f1e1;border-radius:12px 12px 3px 12px}.side-column{display:flex;flex-direction:column;gap:17px;padding-top:3px}.profile-card,.topics-card{padding:19px}.side-card-title{display:flex;align-items:center;gap:9px}.side-card-title h3{font-family:'Noto Sans Kannada',sans-serif;font-size:14px;margin:0;color:#294431}.mini-icon{width:30px;height:30px;display:grid;place-items:center;border-radius:9px;background:#eaf3e7;color:#3b7547}.mini-icon.amber{background:#fbf0dc;color:#a87829}.side-description{font-family:'Noto Sans Kannada',sans-serif;font-size:11px;line-height:1.8;color:#7a887c;margin:12px 0 16px}.profile-card label{display:flex;flex-direction:column;gap:4px;font-family:'Noto Sans Kannada',sans-serif;font-size:11px;color:#3d5944;font-weight:600;margin:13px 0 7px}.profile-card label span{font-family:'DM Sans',sans-serif;font-size:9px;color:#9aa49a;font-weight:400}.profile-card input{width:100%;border:1px solid #dfe6dd;border-radius:8px;padding:11px 12px;font-size:12px;outline:none;background:#fcfdfb;color:#294431}.profile-card input:focus{border-color:#8dbb83;box-shadow:0 0 0 3px #eaf4e7}.profile-card input::placeholder{color:#aab3a9}.privacy-note{display:flex;gap:7px;align-items:flex-start;margin-top:15px;padding:10px;background:#f7f9f5;border-radius:8px;color:#7c8b7d;font-family:'Noto Sans Kannada',sans-serif;font-size:9px;line-height:1.8}.privacy-note svg{flex-shrink:0;margin-top:2px;color:#699064}.topic-list{margin-top:14px}.topic-item{display:flex;align-items:center;gap:10px;padding:12px 0;border-top:1px solid #eff2ed}.topic-icon{width:32px;height:32px;flex-shrink:0;display:grid;place-items:center;border-radius:9px;background:#f2f6ef;color:#59845a}.topic-item strong{font-family:'Noto Sans Kannada',sans-serif;font-size:11px;font-weight:600;color:#3c5943}.topic-item p{font-family:'Noto Sans Kannada',sans-serif;font-size:10px;color:#89968a;margin:4px 0 0;line-height:1.7}.topic-chevron{margin-left:auto;transform:rotate(-90deg);color:#b0b9ae;flex-shrink:0}.human-help-card{background:#eaf2e5;border:1px solid #d8e7d1;border-radius:13px;padding:16px;display:flex;align-items:flex-start;gap:12px}.human-help-icon{width:35px;height:35px;display:grid;place-items:center;background:#d8e9d0;color:#397247;border-radius:10px;flex-shrink:0}.human-help-card strong{font-family:'Noto Sans Kannada',sans-serif;font-size:12px;color:#315a38}.human-help-card p{font-family:'Noto Sans Kannada',sans-serif;font-size:10px;line-height:1.8;color:#718873;margin:6px 0 0}.footer{border-top:1px solid #e2e8df;background:#fff;padding:22px clamp(20px,5vw,76px);display:flex;align-items:center;gap:20px}.footer-brand .brand-mark{width:31px;height:31px;border-radius:9px}.footer-brand .brand-name{font-size:15px}.footer>p{font-family:'Noto Sans Kannada',sans-serif;font-size:10px;color:#849084;margin:0}.footer-disclaimer{margin-left:auto;font-size:9px;color:#a1aaa0}.spin{animation:spin 1.2s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}@keyframes pulse{0%{transform:scale(.95);opacity:.6}70%{transform:scale(1.12);opacity:0}100%{transform:scale(1.12);opacity:0}}
+@media(max-width:900px){.hero-art{right:-7%;width:43%;opacity:.7}.workspace{grid-template-columns:minmax(0,1fr);padding-top:28px}.side-column{display:grid;grid-template-columns:1fr 1fr;align-items:start}.human-help-card{grid-column:1/-1}.footer{flex-wrap:wrap}.footer-disclaimer{margin-left:0;width:100%}}
+@media(max-width:600px){.topbar{height:66px;padding:0 17px}.topbar-right{gap:8px}.secure-note{display:none}.hero{padding:33px 20px 35px;min-height:300px}.hero-art{right:-22%;width:68%;opacity:.25}.hero h1{font-size:29px}.hero-subtitle{font-size:12px;max-width:340px}.hero-trust{gap:10px;font-size:10px}.workspace{padding:25px 15px 40px;gap:17px}.section-heading h2{font-size:19px}.call-card{padding:27px 15px 20px;min-height:330px}.call-card h3{font-size:16px}.call-instructions{font-size:11px}.primary-call-button{padding:13px 14px;font-size:11px}.side-column{display:flex}.footer{padding:20px;gap:12px}.footer>p{width:100%;line-height:1.8}.language-pill{font-size:11px;padding:7px 9px}.transcript-body{height:210px}}
+
+/* ==========================================================
+   CLIMATECOINS — KANNADA FARMER ASSISTANT
+   FPO-inspired farmer-photo background
+   Keep fpo.jpg inside public/
+   ========================================================== */
+
+/* Soft full-page farmer photograph, similar to the FPO dashboard.
+   The pale overlay keeps the Kannada text and cards readable. */
+html {
+  min-height: 100%;
+  background: #f6f7f2;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #f6f7f2;
+  background-image: linear-gradient(
+    180deg,
+    rgba(246, 247, 242, 0.82) 0%,
+    rgba(246, 247, 242, 0.88) 48%,
+    rgba(246, 247, 242, 0.91) 100%
+  ), url('/fpo.jpg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.app-shell {
+  position: relative;
+  background: transparent;
+}
+
+/* Header stays clean and readable over the background. */
+.topbar {
+  background: rgba(255, 255, 255, 0.92);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+/* Hero: green-tinted farmer photo on the right, like the FPO banner. */
+.hero {
+  isolation: isolate;
+  background-color: #edf3e9;
+  background-image: linear-gradient(
+    90deg,
+    rgba(237, 243, 233, 0.99) 0%,
+    rgba(237, 243, 233, 0.96) 43%,
+    rgba(237, 243, 233, 0.58) 64%,
+    rgba(23, 63, 47, 0.10) 100%
+  ), url('/fpo.jpg');
+  background-position: center center, center 48%;
+  background-size: cover, cover;
+  background-repeat: no-repeat, no-repeat;
+}
+
+.hero-copy {
+  max-width: 620px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* Remove the old CSS plant/hill illustration because the photo replaces it. */
+.hero-art {
+  display: none !important;
+}
+
+/* Keep all assistant panels opaque for strong contrast and accessibility. */
+.call-card,
+.transcript-card,
+.profile-card,
+.topics-card {
+  background: rgba(255, 255, 255, 0.96);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-color: rgba(226, 232, 223, 0.95);
+  box-shadow: 0 8px 26px rgba(25, 55, 39, 0.07);
+}
+
+.human-help-card {
+  background: rgba(234, 242, 229, 0.96);
+}
+
+.footer {
+  background: rgba(255, 255, 255, 0.93);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+/* Tablet and mobile: avoid fixed-background repaint issues. */
+@media (max-width: 900px) {
+  body {
+    background-attachment: scroll;
+  }
+
+  .hero {
+    background-image: linear-gradient(
+      90deg,
+      rgba(237, 243, 233, 0.98) 0%,
+      rgba(237, 243, 233, 0.91) 58%,
+      rgba(237, 243, 233, 0.48) 100%
+    ), url('/fpo.jpg');
+    background-position: center center, 60% center;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    background-image: linear-gradient(
+      rgba(246, 247, 242, 0.91),
+      rgba(246, 247, 242, 0.94)
+    ), url('/fpo.jpg');
+    background-position: center center;
+    background-size: cover;
+  }
+
+  .hero {
+    background-image: linear-gradient(
+      180deg,
+      rgba(237, 243, 233, 0.96) 0%,
+      rgba(237, 243, 233, 0.88) 60%,
+      rgba(237, 243, 233, 0.66) 100%
+    ), url('/fpo.jpg');
+    background-position: center center, 58% center;
+  }
+}
+
+/* ==========================================================
+   FINAL OVERRIDES — REMOVE THE TOP-RIGHT CSS ILLUSTRATION
+   Keep the farmer photograph as the hero background instead.
+   ========================================================== */
+.hero .hero-art,
+.hero-art,
+.hero .sun,
+.hero .hill,
+.hero .plant,
+.hero .art-caption {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Ensure the hero photograph is visible behind the copy. */
+.hero {
+  position: relative !important;
+  overflow: hidden !important;
+  background-color: #edf3e9 !important;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(237, 243, 233, 0.98) 0%,
+      rgba(237, 243, 233, 0.92) 38%,
+      rgba(237, 243, 233, 0.60) 62%,
+      rgba(237, 243, 233, 0.22) 100%
+    ),
+    url('/fpo.jpg') !important;
+  background-position: center center, center 48% !important;
+  background-size: cover, cover !important;
+  background-repeat: no-repeat, no-repeat !important;
+}
+
+.hero-copy {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* Do not let the page-wide photo reduce readability of assistant panels. */
+.call-card,
+.transcript-card,
+.profile-card,
+.topics-card {
+  background: rgba(255, 255, 255, 0.97) !important;
+  border: 1px solid #e2e8df !important;
+  box-shadow: 0 8px 26px rgba(25, 55, 39, 0.07) !important;
+}
+
+.topbar,
+.footer {
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(237, 243, 233, 0.98) 0%,
+        rgba(237, 243, 233, 0.90) 58%,
+        rgba(237, 243, 233, 0.62) 100%
+      ),
+      url('/fpo.jpg') !important;
+    background-position: center center, 60% center !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(237, 243, 233, 0.97) 0%,
+        rgba(237, 243, 233, 0.90) 65%,
+        rgba(237, 243, 233, 0.72) 100%
+      ),
+      url('/fpo.jpg') !important;
+    background-position: center center, 58% center !important;
+  }
+}

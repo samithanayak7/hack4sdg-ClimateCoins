@@ -4,3 +4,157 @@
 @media(max-width:1250px){.sidebar{width:230px}.main-area{margin-left:230px}.page-content{padding-left:25px;padding-right:25px}.page-header{padding-left:25px;padding-right:25px}.list-panel{margin-left:25px;margin-right:25px}.page-alert{margin-left:25px;margin-right:25px}.app-footer{padding-left:25px;padding-right:25px}.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.requests-layout{padding-left:25px;padding-right:25px}.login-form h2{font-size:34px}}
 @media(max-width:850px){.sidebar{transform:translateX(-100%);transition:transform .2s ease;width:270px}.sidebar.open{transform:translateX(0);box-shadow:12px 0 35px #163c2a22}.mobile-close{display:grid;margin-left:auto;background:transparent;border:0;color:#6e7d72}.mobile-overlay{display:block;position:fixed;inset:0;background:#122a1c66;border:0;z-index:15}.main-area{margin-left:0}.menu-button{display:grid;place-items:center;background:transparent;border:0;color:#536b59;margin-right:12px}.topbar{padding:0 20px}.topbar-left{display:flex;align-items:center}.topbar-right{gap:10px}.system-status{display:none}.page-header{padding:25px 20px 20px;align-items:flex-start;gap:15px;flex-direction:column}.page-content{padding:0 20px 20px}.list-panel{margin:0 20px 20px}.page-alert{margin-left:20px;margin-right:20px}.two-column{grid-template-columns:1fr}.app-footer{padding:15px 20px}.welcome-banner{padding:25px 22px}.banner-illustration{opacity:.25}.login-shell{grid-template-columns:1fr}.login-art{min-height:350px;padding:28px 25px}.art-copy h1{font-size:42px}.art-copy{margin:45px 0}.art-footer{gap:20px}.login-form-wrap{padding:45px 24px}.login-form h2{font-size:32px}.requests-layout{grid-template-columns:1fr;padding:0 20px 20px}}
 @media(max-width:560px){.breadcrumb span,.breadcrumb svg{display:none}.topbar{height:60px;padding:0 14px}.top-user>div:nth-child(2),.top-user>svg{display:none}.top-user{padding-left:8px}.page-header h1{font-size:25px}.header-actions{width:100%;justify-content:space-between}.stats-grid{grid-template-columns:1fr 1fr;gap:9px}.stat-card{padding:13px}.stat-value{font-size:22px}.project-grid{grid-template-columns:1fr}.market-tools{align-items:stretch;flex-direction:column}.search-box{min-width:0}.filter-box select{width:100%;max-width:none}.verified-toggle{align-self:flex-start}.marketplace-intro{align-items:flex-start;flex-direction:column}.page-content{padding-left:12px;padding-right:12px}.page-header{padding-left:12px;padding-right:12px}.page-alert{margin-left:12px;margin-right:12px}.list-panel{margin-left:12px;margin-right:12px}.table-wrap table{min-width:720px}.panel-heading{padding:15px 12px}.welcome-banner h2{font-size:23px}.art-footer{gap:13px}.art-footer b{font-size:18px}.login-art{min-height:320px}.modal-backdrop{padding:10px}.detail-modal,.buy-modal{max-height:calc(100vh - 20px)}.modal-content{padding:18px}.buy-modal{padding:22px}.evidence-list>div{flex-direction:column;gap:5px}.evidence-list b{text-align:left}.requests-layout{padding-left:12px;padding-right:12px}}
+
+/* ==========================================================
+   CLIMATECOINS — DATA CENTRE BUYER PORTAL
+   Image: public/datacentre.jpg
+   ========================================================== */
+
+/* LOGIN PAGE — image in the left green panel */
+.login-art {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  background-color: #173f2f !important;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(13, 50, 34, 0.86),
+      rgba(23, 63, 47, 0.65)
+    ),
+    url('/datacentre.jpg') !important;
+
+  background-position: center, center;
+  background-size: cover, cover;
+  background-repeat: no-repeat, no-repeat;
+}
+
+/* Keep login branding, text and footer above the image */
+.login-art > .brand,
+.login-art .art-copy,
+.login-art .art-footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* DASHBOARD — keep the banner's green base */
+.welcome-banner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #173f2f !important;
+}
+
+/* Image fills the right half of the welcome banner */
+.welcome-banner::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 48%;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(23, 63, 47, 0.16),
+      rgba(23, 63, 47, 0.02)
+    ),
+    url('/datacentre.jpg');
+
+  background-position: center, center;
+  background-size: cover, cover;
+  background-repeat: no-repeat, no-repeat;
+}
+
+/* Keep banner content above the image */
+.welcome-banner > div:first-child {
+  position: relative;
+  z-index: 2;
+  max-width: 52%;
+}
+
+/* Hide the previous decorative shield illustration */
+.welcome-banner .banner-illustration {
+  display: none !important;
+}
+
+/* TABLET */
+@media (max-width: 850px) {
+  .welcome-banner::after {
+    width: 45%;
+    opacity: 0.9;
+  }
+
+  .welcome-banner > div:first-child {
+    max-width: 68%;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 560px) {
+  .welcome-banner {
+    min-height: 300px;
+    padding-bottom: 135px;
+  }
+
+  .welcome-banner::after {
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 135px;
+
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(23, 63, 47, 0.02),
+        rgba(23, 63, 47, 0.12)
+      ),
+      url('/datacentre.jpg');
+
+    background-position: center, center;
+    background-size: cover, cover;
+    background-repeat: no-repeat, no-repeat;
+  }
+
+  .welcome-banner > div:first-child {
+    max-width: 100%;
+  }
+}
+
+/
+/
+
+/* ==========================================================
+   CLIMATECOINS — MARKETPLACE PROJECT IMAGES
+   ========================================================== */
+
+/* Agroforestry card — use the exact filename */
+.project-art.art-tree {
+  background-color: #dce8d8 !important;
+  background-image: url("/agroforestry-s.png") !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+
+
+/* Sugarcane card — keep the working image */
+.project-art.art-soil {
+  background-color: #e8eddf !important;
+  background-image: url("/Sugarcane-m.jpeg") !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+
+
+/* Hide decorative illustrations only */
+.project-art.art-tree .art-landscape,
+.project-art.art-soil .art-landscape {
+  display: none !important;
+}

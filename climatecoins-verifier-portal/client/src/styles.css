@@ -8,3 +8,111 @@
 .table-entity{display:flex;align-items:center;gap:9px;min-width:180px}.table-entity>div{display:grid;gap:4px}.table-entity small{font-size:9px;color:#8b988f}.entity-avatar{width:32px;height:32px;display:grid;place-items:center;background:#eaf2e6;color:#507750;border-radius:9px;flex:0 0 32px}.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:10px}.button.primary{background:#173f2f;color:#fff;border-color:#173f2f}.button.primary:hover{background:#255b41}.review-modal{width:min(100%,760px)}.detail-hero{padding:25px;display:flex;align-items:flex-end;justify-content:space-between;color:#31563b}.detail-hero .eyebrow{margin:0}.art-soil{background:radial-gradient(circle at 75% 25%,#f5f6e9 0,#dfead8 42%,#c6d9bc 100%)}.review-title-row{display:flex;justify-content:space-between;gap:15px;align-items:flex-start}.review-title-row h2{margin:10px 0 5px}.priority-box{display:grid;gap:5px;padding:10px 13px;border:1px solid var(--line);border-radius:9px;background:#fafbf8;min-width:90px}.priority-box small{font-size:9px;color:#8a968e}.priority-box b{font-size:12px;color:#31503b}.modal-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.modal-facts>div{padding:12px;border:1px solid var(--line);border-radius:9px;background:#fcfdfb;display:grid;gap:6px}.modal-facts small{font-size:9px;color:#849187}.modal-facts b{font-size:11px;color:#35533e}.review-tabs{display:flex;gap:5px;border-bottom:1px solid var(--line);margin-top:22px;overflow:auto}.review-tabs button{border:0;background:transparent;padding:12px 13px;color:#7b8b80;font-size:10px;white-space:nowrap;border-bottom:2px solid transparent}.review-tabs button.selected{color:#234b32;font-weight:700;border-bottom-color:#42794f}.evidence-list>div>div{display:grid;gap:5px}.evidence-list>div small{font-size:9px;color:#849187}.finding-list{display:grid;gap:9px}.finding-card{border:1px solid var(--line);border-radius:9px;padding:13px}.finding-head,.finding-foot{display:flex;justify-content:space-between;align-items:center;gap:10px}.finding-head b{font-size:11px;color:#31503b}.finding-card p{font-size:11px;color:#6c7c70;line-height:1.6}.finding-foot{font-size:9px;color:#909c92}.inline-form{border-top:1px solid var(--line);margin-top:15px;padding:15px 0 0}.inline-form h3,.decision-form h3{margin-top:0}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.decision-form{padding:5px 0 0}.decision-form .sign-in{margin-top:17px}.alert.error{display:flex;gap:8px;align-items:center;background:#fbece9;color:#a74d40;border:1px solid #f3d2cb;padding:10px 12px;border-radius:8px;font-size:11px}.page-alert{margin:0 38px 15px}.page-alert button{margin-left:auto;border:0;background:transparent;color:inherit}.toast{position:fixed;right:24px;bottom:24px;z-index:80;background:#173f2f;color:#fff;border-radius:9px;padding:12px 16px;box-shadow:0 10px 35px #173f2f40;display:flex;align-items:center;gap:9px;font-size:12px}.empty{padding:30px 15px;text-align:center;color:#8a968e;display:grid;justify-items:center;gap:8px;font-size:11px}.empty p{margin:0}.mobile-close,.menu-button,.mobile-overlay{display:none}
 @media(max-width:850px){.page-alert{margin-left:20px;margin-right:20px}.modal-facts{grid-template-columns:repeat(2,minmax(0,1fr))}.review-title-row{flex-direction:column}.priority-box{display:flex;align-items:center;gap:10px}.mobile-close{display:grid}.menu-button{display:grid}.mobile-overlay{display:block}.form-row{grid-template-columns:1fr}}
 @media(max-width:560px){.page-alert{margin-left:12px;margin-right:12px}.review-modal .modal-content{padding:16px}.modal-facts{gap:6px}.modal-facts>div{padding:9px}.review-tabs button{padding:11px 9px}.detail-hero{height:130px}.toast{left:12px;right:12px;bottom:12px;justify-content:center}}
+
+/* ==========================================================
+   CLIMATECOINS — VERRA IMAGE IN LOGIN AND DASHBOARD
+   Image location: public/verra.png
+   ========================================================== */
+
+/* LOGIN PAGE — photo behind the left-side welcome text */
+.login-art {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #173f2f !important;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(13, 50, 34, 0.88),
+      rgba(23, 63, 47, 0.72)
+    ),
+    url('/verra.jpg') !important;
+  background-position: center, center;
+  background-size: cover, cover;
+  background-repeat: no-repeat, no-repeat;
+}
+
+/* Keep the login content readable above the photo */
+.login-art > .brand,
+.login-art .art-copy,
+.login-art .art-footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* DASHBOARD — photo on the right half of the green banner */
+.welcome-banner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #173f2f !important;
+}
+
+/* Add the image without changing the banner HTML */
+.welcome-banner::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 48%;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(23, 63, 47, 0.15),
+      rgba(23, 63, 47, 0.02)
+    ),
+    url('/verra.jpg') center / cover no-repeat;
+}
+
+/* Keep the dashboard banner text above the image */
+.welcome-banner > div:first-child {
+  position: relative;
+  z-index: 2;
+  max-width: 52%;
+}
+
+/* Hide the old decorative shield illustration */
+.welcome-banner .banner-illustration {
+  display: none !important;
+}
+
+/* Responsive dashboard layout */
+@media (max-width: 850px) {
+  .welcome-banner::after {
+    width: 45%;
+    opacity: 0.8;
+  }
+
+  .welcome-banner > div:first-child {
+    max-width: 68%;
+  }
+}
+
+@media (max-width: 560px) {
+  .welcome-banner {
+    min-height: 300px;
+    padding-bottom: 135px;
+  }
+
+  .welcome-banner::after {
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 135px;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(23, 63, 47, 0.02),
+        rgba(23, 63, 47, 0.12)
+      ),
+      url('/verra.jpg') center / cover no-repeat;
+  }
+
+  .welcome-banner > div:first-child {
+    max-width: 100%;
+  }
+}

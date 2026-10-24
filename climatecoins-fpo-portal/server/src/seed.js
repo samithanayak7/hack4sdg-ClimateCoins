@@ -27,5 +27,61 @@ if (!count) {
  ];
  for (const row of samples) add.run(...row,user.id);
 }
+
+/* Synthetic pooling test data.
+   These coordinates are simulated, not verified farm locations. */
+
+const poolingDemoFarmers = [
+  ["CC-POOL-01", "Demo Farmer One",   3.0, 12.9950, 77.7600, "agroforestry"],
+  ["CC-POOL-02", "Demo Farmer Two",   2.5, 12.9970, 77.7620, "agroforestry"],
+  ["CC-POOL-03", "Demo Farmer Three", 4.0, 12.9910, 77.7570, "agroforestry"],
+  ["CC-POOL-04", "Demo Farmer Four",  3.5, 12.9990, 77.7660, "agroforestry"],
+  ["CC-POOL-05", "Demo Farmer Five",  2.0, 12.9880, 77.7650, "agroforestry"],
+  ["CC-POOL-06", "Demo Water Farmer", 4.0, 12.9960, 77.7630, "water_management"],
+  ["CC-POOL-07", "Demo Isolated Farmer", 3.0, 13.1500, 77.9500, "agroforestry"]
+];
+
+const addDemoFarmer = db.prepare(`
+  INSERT OR IGNORE INTO farmers (
+    farmer_code, full_name, phone, village, district, state,
+    acres, crops, soil_type, irrigation, practices,
+    land_ownership, consent, eligibility_status,
+    eligibility_notes, fpo_id, latitude, longitude,
+    intervention_type, plot_area_acres, location_source,
+    synthetic_demo
+  ) VALUES (
+    ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+  )
+`);
+
+for (let i = 0; i < poolingDemoFarmers.length; i++) {
+  const [code, name, acres, lat, lon, intervention] =
+    poolingDemoFarmers[i];
+
+  addDemoFarmer.run(
+    code,
+    name,
+    `9000001${String(i).padStart(3, "0")}`,
+    "Demo Village",
+    "Bengaluru Rural",
+    "Karnataka",
+    acres,
+    "Mixed crops",
+    "Red soil",
+    "Drip irrigation",
+    intervention,
+    "owned",
+    1,
+    "eligible",
+    "Synthetic pooling test record",
+    user.id,
+    lat,
+    lon,
+    intervention,
+    acres,
+    "demo",
+    1
+  );
+}
 console.log('Seed complete. Demo login: fpo@climatecoins.local / ChangeMe12345!');
 db.close();

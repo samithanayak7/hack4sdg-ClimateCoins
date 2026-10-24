@@ -129,4 +129,4 @@ db.exec(`
   CREATE INDEX IF NOT EXISTS idx_pool_members_farmer
     ON farmer_pool_members(farmer_id);
 `);
-module.exports = db;
+

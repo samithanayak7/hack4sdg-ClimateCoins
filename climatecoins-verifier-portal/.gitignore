@@ -1,0 +1,5 @@
+node_modules/
+.env
+client/dist/
+server/data/store.json
+npm-debug.log*

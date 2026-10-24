@@ -10,58 +10,86 @@
 .login-orbit{display:none}
 
 
+/
 /* ==========================================================
-   ClimateCoins FPO Portal — full dashboard farm background
-   Keep this block at the end so it overrides earlier styles.
-   Image required: client/public/farmer-spraying.jpg
+   CLIMATECOINS — FARMER IMAGE INSIDE DASHBOARD HERO
    ========================================================== */
 
+/* Keep the entire dashboard background clean */
 .main-area {
-  position: relative;
-  isolation: isolate;
-  background-color: #f6f7f3 !important;
-  background-image:
-    linear-gradient(
-      rgba(246, 247, 243, 0.76),
-      rgba(246, 247, 243, 0.76)
-    ),
-    url('/farmer-spraying.jpg') !important;
-  background-position: center center, center center !important;
-  background-size: cover, cover !important;
-  background-repeat: no-repeat, no-repeat !important;
-  background-attachment: fixed, fixed !important;
+  background: #f6f7f3 !important;
+  background-image: none !important;
 }
 
-/* Keep the page area transparent so the photograph shows through. */
+/* Keep dashboard content transparent */
 .main-area .page-content {
   background: transparent !important;
 }
 
-/* A lightly translucent top bar lets the image remain visible behind it. */
+/* Keep the navigation clean */
 .main-area .topbar {
-  background: rgba(255, 255, 255, 0.82) !important;
+  background: rgba(255, 255, 255, 0.96) !important;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 
-/* Keep cards legible while allowing a subtle hint of the background. */
+/* Green welcome banner */
+.main-area .welcome-banner {
+  position: relative;
+  overflow: hidden;
+  background: #183e2d !important;
+  border-radius: 17px;
+}
+
+/* Left-side text panel */
+.main-area .welcome-copy {
+  position: relative;
+  z-index: 2;
+}
+
+/* Farmer photograph on the right half of the banner */
+.main-area .welcome-visual {
+  position: absolute;
+  inset: 0 0 0 48%;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(8, 35, 20, 0.12),
+      rgba(8, 35, 20, 0.02)
+    ),
+    url('/farmer-spraying.jpg') center 48% / cover no-repeat !important;
+}
+
+/* Remove decorative CSS illustrations */
+.main-area .welcome-visual .sun,
+.main-area .welcome-visual .hill,
+.main-area .welcome-visual .farm-row {
+  display: none !important;
+}
+
+/* Keep dashboard cards readable */
 .main-area .stat-card,
 .main-area .panel,
 .main-area .detail-hero,
 .main-area .form-panel,
 .main-area .aside-note,
 .main-area .review-card {
-  background-color: rgba(255, 255, 255, 0.94);
+  background-color: #ffffff !important;
 }
 
-/* Preserve the existing split hero banner and its own farmer image. */
-.main-area .welcome-banner {
-  background-color: #183e2d;
-}
+/* Mobile: image below the welcome text */
+@media (max-width: 600px) {
+  .main-area .welcome-banner {
+    min-height: 345px;
+  }
 
-/* On mobile, avoid fixed-background scrolling glitches. */
-@media (max-width: 900px) {
-  .main-area {
-    background-attachment: scroll, scroll !important;
+  .main-area .welcome-copy {
+    width: 100%;
+  }
+
+  .main-area .welcome-visual {
+    inset: 48% 0 0 0;
   }
 }

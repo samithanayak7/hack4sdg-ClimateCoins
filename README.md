@@ -60,8 +60,7 @@ flowchart TD
 
 ## 🧰 Technology Stack
 
-The repository includes a web portal and the project also uses Python for data-driven functionality. Confirm library names against the current source code before treating every item below as implemented.
-
+The repository includes a web portal and the project also uses Python for data-driven functionality. 
 | Technology | Role |
 |---|---|
 | **React** | Interactive web interface and farmer-facing portal |
@@ -80,7 +79,7 @@ The repository includes a web portal and the project also uses Python for data-d
 - **Farmer and FPO portal:** React, JavaScript, Node.js/Express, and SQLite in the portal implementation.
 - **Digital MRV and marketplace workflows:** Web application and backend modules, with GIS, satellite, verification, and buyer integrations added where available.
 
-> **Stack accuracy note:** React, Express, SQLite, and Python are listed based on the project context.
+> **Stack accuracy note:** React, Express, SQLite, and Python as listed.
 
 ## 🚀 Getting Started
 
